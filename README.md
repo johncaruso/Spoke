@@ -13,7 +13,7 @@ in ServiceNow.
 
 It's based on the popular Jasmine testing framework for ease of learning.
 
-![ScreenShot](/screenshot.jpg)
+![ScreenShot](/screenshot.png)
 
 ## License:
 MIT, see [LICENSE.md](https://github.com/sn-developer/interactive-process-flow/blob/master/LICENSE.md) for details.
