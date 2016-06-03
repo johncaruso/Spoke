@@ -1,0 +1,260 @@
+${DOCTYPE}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spoke Test Framework</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        rel="stylesheet" crossorigin="anonymous"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" />
+
+    <style type="text/css">
+      #result_body ul {
+        list-style: none;
+      }
+      #result_body li span.glyphicon {
+        margin-left: -2em;
+        margin-right: 0.7em;
+      }
+      .interactive {
+        cursor: pointer;
+      }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+
+    <nav id="header" class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">Spoke</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <!--ul class="nav navbar-nav">
+            <li><a href="#/">
+              <span class="glyphicon glyphicon-th-list"></span>
+              My Lists</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a class="interactive">
+              <span class="glyphicon glyphicon-question-sign"></span>
+              Help</a></li>
+          </ul-->
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h3>Spoke Test Runner</h3>
+              <hr />
+              <p>A lightweight Jasmine based framework for behavioural testing in ServiceNow.</p>
+
+              <table class="table table-striped table-bordered">
+                <tr>
+                  <th>Application:</th>
+                  <td>${APP_NAME}</td>
+                </tr>
+                <tr>
+                  <th>Description:</th>
+                  <td>${APP_DESC}</td>
+                </tr>
+                <tr>
+                  <th>Version:</th>
+                  <td>${APP_VERSION}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="panel-footer text-right">
+              <button id="run_btn" class="btn btn-success">Run</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <div class="alert" id="result_title" style="display: none"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"
+         id="result_body" style="display: none"></div>
+      </div>
+
+    </div>
+
+    <script type="text/javascript">
+      var SYSPARM_CK = '${SYSPARM_CK}';
+      var MAX_ATTACH_SIZE = '${MAX_ATTACH_SIZE}';
+    </script>
+
+    <script type="text/javascript">
+
+      var spoke_client = (function () {
+
+        var $result_title = $('#result_title');
+        var $result_body = $('#result_body');
+
+        $result_body.on('click', 'div.panel-heading', function () {
+          $(this).next('.panel-body').toggle();
+        });
+
+        function renderNode(node) {
+          var p, li, ul, i, fails, class_name, icon;
+
+          if (node.type == 'spec') {
+            switch (node.status) {
+              case 'passed':
+                class_name = 'text-success';
+                icon = 'ok-circle';
+                break;
+              case 'pending':
+                class_name = 'text-warning';
+                icon = 'ban-circle';
+                if (node.pendingReason) {
+                  node.description += ' PENDING WITH MESSAGE: ' + node.pendingReason;
+                }
+                break;
+              case 'failed':
+                class_name = 'text-danger';
+                icon = 'remove-circle';
+                break;
+            }
+          } else {
+            class_name = '';
+            icon = 'list';
+          }
+
+          icon = '<span class="small glyphicon glyphicon-' + icon + '"></span> ';
+
+          li = $('<li></li>');
+          li.append('<p class="' + class_name + '">' + icon + node.description + '</p>');
+
+          if (node.hasOwnProperty('failed_expectations')) {
+            if (node.failed_expectations.length) {
+              fails = $('<table class="table table-striped table-bordered small"></table>');
+              for (i = 0; node.failed_expectations.length > i; i++) {
+                fails.append('<tr class="warning"><td>' + node.failed_expectations[i] + '</td></tr>');
+              }
+              li.append(fails);
+            }
+          }
+
+          if (node.hasOwnProperty('children')) {
+            if (node.children.length) {
+              ul = $('<ul></ul>');
+              for (i = 0; node.children.length > i; i++) {
+                ul.append(renderNode(node.children[i]));
+              }
+              li.append(ul);
+            }
+          }
+
+          return li;
+        }
+
+        function render(results) {
+          var ul, i, j, suite,
+              $panel_title,
+              $panel_body;
+
+          $result_title.text('Testing ' + results.status + '. ' +
+            results.total_specs + ' specs, ' + results.failed_specs + ' failed.');
+
+          if (results.failed_specs > 0) {
+            $result_title.removeClass('alert-success alert-warning').addClass('alert-danger');
+          } else if (results.status == 'ignored') {
+            $result_title.removeClass('alert-success alert-danger').addClass('alert-warning');
+          } else {
+            $result_title.removeClass('alert-warning alert-danger').addClass('alert-success');
+          }
+
+          for (i = 0; results.suites.length > i; i++) {
+            suite = results.suites[i];
+
+            $panel = $('<div class="panel" id="result_title">'
+                + '<div class="panel-heading interactive"><h3 class="panel-title">'
+                + suite.description + '</h3></div></div>');
+            $panel_body = $('<div class="panel-body"></div>');
+
+            if (suite.hasOwnProperty('children')) {
+              ul = $('<ul></ul>');
+              for (j = 0; suite.children.length > j; j++) {
+                ul.append(renderNode(suite.children[j]));
+              }
+              $panel_body.append(ul);
+            }
+
+            if ($panel_body.find('.text-danger').length) {
+              $panel.addClass('panel-danger');
+            } else {
+              $panel.addClass('panel-success');
+              $panel_body.hide();
+            }
+            
+            $panel.append($panel_body);
+            $result_body.append($panel);
+          }
+
+        }
+
+        var api = {};
+
+        api.run = function () {
+
+          $result_title.hide();
+          $result_body.empty();
+
+          return $.ajax({
+            url: '?action=executeTests${AMP}sysparm_ck=' + SYSPARM_CK,
+            dataType: 'json',
+            statusCode: {
+              401: function () {
+                window.location.reload();
+              }
+            }
+          }).then(function (data) {
+            if (data.$success) {
+              render(data.results);
+              $result_title.show();
+              $result_body.show();
+            } else {
+              alert('AJAX operation failed: ' + data.$error);
+            }
+          }, function (xhr) {
+            alert('Failed to execute AJAX request to run tests.');
+          });
+        }
+
+        return api;
+      })();
+
+      $('#run_btn').click(function () {
+        $('#run_btn').prop('disabled', true).text('Running...');
+        spoke_client.run().done(function () {
+          $('#run_btn').prop('disabled', false).text('Run');
+        });
+      });
+    </script>
+
+  </body>
+</html>
