@@ -231,6 +231,12 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
 
   if (glide_record.hasNext()) {
     while (glide_record.next()) {
+      script += '$.reporter.storeDetails({' +
+                  '$display: "' + glide_record.getDisplayValue() + '", ' +
+                  'api_name: "' + glide_record.getValue('api_name') + '", ' +
+                  'sys_updated_on: "' + glide_record.getValue('sys_updated_on') + '", ' +
+                  'sys_id: "' + glide_record.getValue('sys_id') + '" ' +
+                '});';
       script += 'describe("Specification script: ' + glide_record.getDisplayValue() + '", function () { \n';
       script += glide_record.getValue(script_field) + '\n\n';
       script += '});\n';
@@ -1176,7 +1182,8 @@ snd_Spoke.Reporter = function () {
     parent_hash: {},
     total_specs: 0,
     failed_specs: 0,
-    status: 'loaded'
+    status: 'loaded',
+    details: []
   };
 
   reporter.addNode = function (type, result) {
@@ -1206,8 +1213,7 @@ snd_Spoke.Reporter = function () {
     if (!this.current.hasOwnProperty('failed_expectations')) {
       this.current.failed_expectations = [];
     }
-
-  }
+  };
 
   // we do this because storing the parent on the node along with the children
   // causes a Stack Overflow
@@ -1273,6 +1279,10 @@ snd_Spoke.Reporter = function () {
         (!result.failed_expectations.length ? 'passed' : 'failed'));
     this.failed_specs += result.failed_expectations.length;
     this.exitNode(result);
+  };
+
+  reporter.storeDetails = function (details) {
+    this.details.push(details);
   };
 
   return reporter;

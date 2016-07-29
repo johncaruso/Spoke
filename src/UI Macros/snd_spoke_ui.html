@@ -22,6 +22,14 @@ ${DOCTYPE}
       .interactive {
         cursor: pointer;
       }
+      .panel-heading h3 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: normal;
+        width: 75%;
+        /*padding-top: 8px; FOR BUTTONS */
+      }
     </style>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"
@@ -83,7 +91,9 @@ ${DOCTYPE}
               </table>
             </div>
             <div class="panel-footer text-right">
-              <button id="run_btn" class="btn btn-success">Run</button>
+              <button id="get_btn" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Show specs</button>
+              <button id="run_btn" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>
+                <span id="run_btn_text">Run</span></button>
             </div>
           </div>
         </div>
@@ -108,6 +118,8 @@ ${DOCTYPE}
     </script>
 
     <script type="text/javascript">
+
+      var url_params={};window.location.search.replace(/[?${AMP}]+([^=${AMP}]+)=([^${AMP}]*)/gi,function(str,key,value){url_params[key] = value;});
 
       var spoke_client = (function () {
 
@@ -172,13 +184,15 @@ ${DOCTYPE}
           return li;
         }
 
-        function render(results) {
+        function renderResults(results) {
           var ul, i, j, suite,
               $panel_title,
-              $panel_body;
+              $panel_body,
+              details;
 
           $result_title.text('Testing ' + results.status + '. ' +
-            results.total_specs + ' specs, ' + results.failed_specs + ' failed.');
+            results.total_specs + ' spec' + (result.total_specs == 1 ? '' : 's') +
+            ', ' + results.failed_specs + ' failed.');
 
           if (results.failed_specs > 0) {
             $result_title.removeClass('alert-success alert-warning').addClass('alert-danger');
@@ -188,12 +202,18 @@ ${DOCTYPE}
             $result_title.removeClass('alert-warning alert-danger').addClass('alert-success');
           }
 
+          if (!results.suites) return;
           for (i = 0; results.suites.length > i; i++) {
             suite = results.suites[i];
+            details = results.details[i];
 
-            $panel = $('<div class="panel" id="result_title">'
-                + '<div class="panel-heading interactive"><h3 class="panel-title">'
-                + suite.description + '</h3></div></div>');
+            $panel =
+                $('<div class="panel" id="result_title"><div class="panel-heading interactive">' +
+                    '<h3 class="panel-title pull-left">' + suite.description + '</h3>' +
+                    '<a class="pull-right" href="/sys_script_include.do?sys_id=' + details.sys_id + '" onclick="$.Event(event).stopPropagation();" target="' + details.sys_id + '">' +
+                      '<span class="glyphicon glyphicon-edit"></span> Edit</a>' +
+                    '<div class="clearfix"></div>' +
+                  '</div></div>');
             $panel_body = $('<div class="panel-body"></div>');
 
             if (suite.hasOwnProperty('children')) {
@@ -208,40 +228,111 @@ ${DOCTYPE}
               $panel.addClass('panel-danger');
             } else {
               $panel.addClass('panel-success');
-              $panel_body.hide();
+              if (results.suites.length > 1) $panel_body.hide();
             }
-            
+
             $panel.append($panel_body);
             $result_body.append($panel);
           }
 
         }
 
+        function renderSpecs(specs) {
+          var $list_group,
+              $panel,
+              spec,
+              i;
+
+          $result_title.text('Found ' + specs.length + ' spec' + (specs.length == 1 ? '' : 's'));
+          if (specs.length) {
+            $result_title.removeClass('alert-warning alert-danger').addClass('alert-success');
+          } else {
+            $result_title.removeClass('alert-success alert-danger').addClass('alert-warning');
+            return;
+          }
+
+          $list_group = $('<div class="list-group"></div>');
+          for (i = 0; specs.length > i; i++) {
+            spec = specs[i];
+            $item =
+                '<div class="list-group-item list-group-item-warning">' +
+                  spec.name +
+                  '<div class="pull-right">' +
+                    '<a class="btn btn-link" href="/sys_script_include.do?sys_id=' + spec.sys_id + '" target="' + spec.sys_id + '">' +
+                      '<span class="glyphicon glyphicon-edit"></span> Edit</a>' +
+                    '<a class="btn btn-success" onclick="spoke_client.executeTests(\'' + spec.api_name + '\'); return false" href="' + api.getExecuteLink(spec.api_name) + '">' +
+                      '<span class="glyphicon glyphicon-play"></span> Run</a>' +
+                  '</div>' +
+                  '<div class="small">Updated: ' + spec.updated + '</div>' +
+                '</div>';
+            $list_group.append($item);
+          }
+          $result_body.append($list_group);
+        }
+
         var api = {};
 
-        api.run = function () {
+        api.current_script = url_params.script;
+
+        api.getAvailableSpecs = function () {
+          var url = ['?action=getAvailableSpecs'];
+          if ('sys_scope' in url_params) url.push('sys_scope=' + url_params.sys_scope);
+          api.current_script = '';
+          return api.run(url.join('${AMP}'), function (data) {
+            if (data.$success) {
+              renderSpecs(data.specs);
+              $result_title.show();
+              $result_body.show();
+            } else {
+              alert('AJAX operation failed: ' + data.$error);
+            }
+          });
+        };
+
+        api.getExecuteLink = function (script) {
+          var url = ['?action=executeTests'];
+          if ('sys_scope' in url_params) url.push('sys_scope=' + url_params.sys_scope);
+          if (script) url.push('script=' + script);
+          return url.join('${AMP}');
+        };
+
+        api.executeTests = function (script) {
+          if (arguments.length > 0) api.current_script = script;
+          return api.run(api.getExecuteLink(api.current_script), function (data) {
+            if (data.$success) {
+              renderResults(data.results);
+              $result_title.show();
+              $result_body.show();
+            } else {
+              alert('AJAX operation failed: ' + data.$error);
+            }
+          });
+        };
+
+        api.run = function (url, callback) {
+          url += '${AMP}sysparm_ck=' + SYSPARM_CK;
+
+          $('#run_btn').prop('disabled', true)
+          $('#get_btn').prop('disabled', true);
 
           $result_title.hide();
           $result_body.empty();
 
+
           return $.ajax({
-            url: '?action=executeTests${AMP}sysparm_ck=' + SYSPARM_CK,
+            url: url,
             dataType: 'json',
             statusCode: {
               401: function () {
                 window.location.reload();
               }
             }
-          }).then(function (data) {
-            if (data.$success) {
-              render(data.results);
-              $result_title.show();
-              $result_body.show();
-            } else {
-              alert('AJAX operation failed: ' + data.$error);
-            }
-          }, function (xhr) {
+          }).then(callback, function (xhr) {
             alert('Failed to execute AJAX request to run tests.');
+          }).then(function () {
+            $('#run_btn').prop('disabled', false);
+            $('#run_btn_text').text(spoke_client.current_script ? 'Run' : 'Run All');
+            $('#get_btn').prop('disabled', false);
           });
         }
 
@@ -249,10 +340,12 @@ ${DOCTYPE}
       })();
 
       $('#run_btn').click(function () {
-        $('#run_btn').prop('disabled', true).text('Running...');
-        spoke_client.run().done(function () {
-          $('#run_btn').prop('disabled', false).text('Run');
-        });
+        $('#run_btn_text').text('Running...');
+        spoke_client.executeTests();
+      });
+
+      $('#get_btn').click(function () {
+        spoke_client.getAvailableSpecs();
       });
     </script>
 

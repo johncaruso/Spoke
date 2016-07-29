@@ -7,11 +7,13 @@
 
   // The scope of our application. Prepended to UI Macro's, etc.
   // Prevents misuse of this processor.
-  var SCOPE = gs.getCurrentScopeName() != 'rhino.global'
-            ? gs.getCurrentScopeName() : 'global';
+  var APP_SCOPE = gs.getCurrentScopeName() != 'rhino.global' ?
+              gs.getCurrentScopeName() : 'global';
+
+  var USER_SCOPE = '' + (g_request.getParameter('sys_scope') || APP_SCOPE);
 
   // the initial UI file to serve
-  var UI_MAIN = (SCOPE !== 'global' ? SCOPE + '_' : '')  + 'snd_spoke_ui';
+  var UI_MAIN = (APP_SCOPE !== 'global' ? APP_SCOPE + '_' : '')  + 'snd_spoke_ui';
 
   // The name of the macro to render when access is denied.
   var UI_403 = '403.html';
@@ -23,12 +25,12 @@
     'DOCTYPE': '<!doctype html>',
 
     // required for attachments to work with glide.security.use_csrf_token on
-    'SYSPARM_CK': SCOPE !== 'global' ? gs.getSession().getSessionToken() : gs.getSessionToken(),
+    'SYSPARM_CK': APP_SCOPE !== 'global' ? gs.getSession().getSessionToken() : gs.getSessionToken(),
 
     // The maximum attachment size that a user can upload
     'MAX_ATTACH_SIZE': (function () {
       var max = gs.getProperty('com.glide.attachment.max_size');
-      if (max == '') max = 1000;
+      if (!max) max = 1000;
       else max = parseInt(max, 10);
       if (isNaN(max)) { max = 20; }
       return max + 'MB';
@@ -37,11 +39,13 @@
     'AMP': '&'
   };
 
+  var NO_CSRF_CHECK = ['executeTests', 'getAvailableSpecs'];
+
   // populate the application detail variables
  (function () {
     var gr = new GlideRecord('sys_scope');
-    if (SCOPE !== 'global') {
-      gr.addQuery('scope', '=', SCOPE);
+    if (USER_SCOPE !== 'global') {
+      gr.addQuery('scope', '=', USER_SCOPE);
       gr.setLimit(1);
       gr.query();
       gr.next();
@@ -65,7 +69,7 @@
         name,
         i;
 
-    if (SCOPE !== 'global') {
+    if (APP_SCOPE !== 'global') {
       for (i = 0; i < names.length; i++) {
         name = names[i];
         params[name] = '' + g_request.getParameter(name);
@@ -86,10 +90,14 @@
     return gs.hasRole('admin');
   }
 
-  function isValidRequest() {
+  function isValidRequest(action) {
     // prevent CSRF
+    var i;
     if (params.sysparm_ck) {
       return params.sysparm_ck == MACRO_VARS.SYSPARM_CK;
+    }
+    for (i = 0; i < NO_CSRF_CHECK.length; i++) {
+      if (NO_CSRF_CHECK[i] == action) return true;
     }
     return false;
   }
@@ -104,15 +112,17 @@
     if (params.script) {
       gr.addQuery('api_name', '=', params.script);
     } else {
-      gr.addQuery('api_name', 'STARTSWITH', SCOPE + '.');
+      gr.addQuery('api_name', 'STARTSWITH', USER_SCOPE + '.');
       gr.addQuery('api_name', 'ENDSWITH', '_spec');
     }
     gr.addQuery('active', '=', true);
+    gr.orderBy('name');
     gr.query();
 
     reporter = snd_Spoke.executeFromScripts(gr, 'script');
 
     data = {};
+    data.details = reporter.details;
     data.failed_specs = reporter.failed_specs;
     data.suites = reporter.tree.children;
     data.total_specs = reporter.total_specs;
@@ -125,16 +135,19 @@
     var gr,
         result;
     gr = new GlideRecord('sys_script_include');
-    gr.addQuery('api_name', 'STARTSWITH', SCOPE + '.');
+    gr.addQuery('api_name', 'STARTSWITH', USER_SCOPE + '.');
     gr.addQuery('api_name', 'ENDSWITH', '_spec');
     gr.addQuery('active', '=', true);
+    gr.orderBy('name');
     gr.query();
 
     result = [];
     while (gr.next()) {
       result.push({
         name: gr.getValue('name'),
-        api_name: gr.getValue('api_name')
+        api_name: gr.getValue('api_name'),
+        updated: gr.sys_updated_on.getDisplayValue(),
+        sys_id: gr.getValue('sys_id')
       });
     }
 
@@ -289,7 +302,7 @@
       return html;
     }
 
-    var field = SCOPE === 'global' ? 'name' : 'scoped_name',
+    var field = APP_SCOPE === 'global' ? 'name' : 'scoped_name',
         macro = getRecord('sys_ui_macro', field + '=' + name),
         output = '';
     if (macro) {
@@ -315,7 +328,7 @@
   }
 
   // prevent CSRF - all requests have valid sysparm_ck
-  else if (params.action && !isValidRequest()) {
+  else if (params.action && !isValidRequest(params.action)) {
     g_response.setStatus(401);
     g_processor.writeOutput('text/plain', 'Authentication is not valid.');
   }
@@ -327,7 +340,7 @@
   }
 
   // ensure requested template is valid for this scope
-  else if (params.hasOwnProperty('template') && (SCOPE === 'global' || params.template.indexOf(SCOPE) != 0)) {
+  else if (params.hasOwnProperty('template') && (APP_SCOPE === 'global' || params.template.indexOf(APP_SCOPE) !== 0)) {
     g_processor.writeOutput('text/plain', 'Invalid template requested; ' +
         'not in application scope: ' + params.template);
   }
