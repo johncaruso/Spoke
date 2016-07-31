@@ -121,6 +121,10 @@
 
     reporter = snd_Spoke.executeFromScripts(gr, 'script');
 
+    if (!reporter) {
+      throw 'Execution failed. Could be a scope issue?';
+    }
+
     data = {};
     data.details = reporter.details;
     data.failed_specs = reporter.failed_specs;
