@@ -3,7 +3,7 @@
 */
 (function () {
 
-  console = typeof console === 'object' ? console : {};
+  snd_console = typeof snd_console === 'object' ? snd_console : {};
 
   // The scope of our application. Prepended to UI Macro's, etc.
   // Prevents misuse of this processor.
@@ -42,7 +42,7 @@
   var NO_CSRF_CHECK = ['executeTests', 'getAvailableSpecs'];
 
   // populate the application detail variables
- (function () {
+  (function () {
     var gr = new GlideRecord('sys_scope');
     if (USER_SCOPE !== 'global') {
       gr.addQuery('scope', '=', USER_SCOPE);
@@ -131,6 +131,7 @@
     data.suites = reporter.tree.children;
     data.total_specs = reporter.total_specs;
     data.status = reporter.status;
+    if (reporter.error) data.error = reporter.error;
 
     return data;
   }
@@ -172,7 +173,7 @@
         start_time,
         errors,
         data,
-        ap;
+        exf = new snd_Spoke.ExceptionFormatter();
 
     start_time = new Date().getTime();
 
@@ -191,7 +192,7 @@
           result.$error = 'Invalid action name: \'' + name + '\'';
       }
 
-      errors = console.get ? console.get({type: 'error'}) : [];
+      errors = snd_console.get ? snd_console.get({type: 'error'}) : [];
       if (errors.length) {
         result.$success = false;
         result.$error = errors.pop();
@@ -199,13 +200,14 @@
 
     } catch (e) {
       result.$success = false;
-      result.$error = e;
+      result.$error = exf.message(e);
+      result.$stack = exf.stack(e);
     }
 
     result.$time = (new Date().getTime()) - start_time;
 
-    if (console.DEBUG) {
-      result.$console = console.getStrings();
+    if ((snd_console.DEBUG || 'debug_mode' in params) && snd_console.getStrings) {
+      result.$snd_console = snd_console.getStrings();
     }
 
     return result;

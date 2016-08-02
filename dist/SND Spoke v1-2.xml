@@ -1,4 +1,47 @@
-/*!
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2016-08-02 15:41:21">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description># [Spoke](https://github.com/sn-developer/Spoke)
+Behaviour driven development in ServiceNow
+
+### Version 1.2
+* Fixed stackOverFlow error with large test suites.
+* Fixed error handling.
+* UI improvements.
+* Added execution timers.</description>
+<inserted/>
+<name>SND Spoke - 1.2</name>
+<origin_sys_id/>
+<release_date/>
+<remote_sys_id>48b289f40f41aa0094f3c09ce1050e44</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_created_by>james@sndeveloper.com</sys_created_by>
+<sys_created_on>2016-08-02 15:41:20</sys_created_on>
+<sys_id>8bb201340f41aa0094f3c09ce1050e05</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@sndeveloper.com</sys_updated_by>
+<sys_updated_on>2016-08-02 15:41:20</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_fecfa9990f37120094f3c09ce1050ee2</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.snd_Spoke&lt;/api_name&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;description&gt;Spoke - A lightweight Jasmine test framework for ServiceNow&amp;#13;
+Contribute at github.com/sn-developer/Spoke&amp;#13;
+james@sndeveloper.com&lt;/description&gt;&lt;name&gt;snd_Spoke&lt;/name&gt;&lt;script&gt;&lt;![CDATA[/*!
   Spoke - A lightweight Jasmine test framework for ServiceNow
   Contribute at github.com/sn-developer/Spoke
   james@sndeveloper.com
@@ -135,7 +178,7 @@ snd_Spoke.prototype = {
   // I've edited the QueueRunner so it no longer uses the attemptAsync function.
   clearStack: function (fn) {
     this.currentSpecCallbackDepth++;
-    if (this.currentSpecCallbackDepth >= this.maximumSpecCallbackDepth) {
+    if (this.currentSpecCallbackDepth &gt;= this.maximumSpecCallbackDepth) {
       this.currentSpecCallbackDepth = 0;
       //realSetTimeout(fn, 0); // no setTimeout function in ServiceNow
       fn();
@@ -346,7 +389,7 @@ snd_Spoke.prototype = {
       expected: '',
       actual: '',
       message: message,
-      error: error && error.message ? error : null
+      error: error &amp;&amp; error.message ? error : null
     });
   },
 
@@ -603,7 +646,7 @@ snd_Spoke.Suite.prototype = {
     if (this.disabled) {
       return 'disabled';
     }
-    return this.result.failedExpectations.length > 0 ? 'failed' : 'finished';
+    return this.result.failedExpectations.length &gt; 0 ? 'failed' : 'finished';
   },
 
   isExecutable: function () {
@@ -611,7 +654,7 @@ snd_Spoke.Suite.prototype = {
   },
 
   canBeReentered: function() {
-    return this.beforeAllFns.length === 0 && this.afterAllFns.length === 0;
+    return this.beforeAllFns.length === 0 &amp;&amp; this.afterAllFns.length === 0;
   },
 
   getResult: function () {
@@ -645,7 +688,7 @@ snd_Spoke.Suite.prototype = {
       };
       this.result.failedExpectations.push(this.expectationResultFactory(data));
     } else {
-      for (var i = 0; i < this.children.length; i++) {
+      for (var i = 0; i &lt; this.children.length; i++) {
         var child = this.children[i];
         child.onException.apply(child, arguments);
       }
@@ -653,13 +696,13 @@ snd_Spoke.Suite.prototype = {
   },
 
   addExpectationResult: function (passed, data, isError) {
-    if(this._isAfterAll(this.children) && this._isFailure(arguments)){
+    if(this._isAfterAll(this.children) &amp;&amp; this._isFailure(arguments)){
       this.result.failedExpectations.push(this.expectationResultFactory(data));
       if(this.throwOnExpectationFailure) {
         throw new snd_Spoke.errors.ExpectationFailed();
       }
     } else {
-      for (var i = 0; i < this.children.length; i++) {
+      for (var i = 0; i &lt; this.children.length; i++) {
         var child = this.children[i];
         try {
           child.addExpectationResult.apply(child, arguments);
@@ -671,7 +714,7 @@ snd_Spoke.Suite.prototype = {
   },
 
   _isAfterAll: function (children) {
-    return children && children[0].result.status;
+    return children &amp;&amp; children[0].result.status;
   },
 
   _isFailure: function (args) {
@@ -724,7 +767,7 @@ snd_Spoke.Spec = function (attrs) {
 
 };
 
-snd_Spoke.Spec.pendingSpecExceptionMessage = '=> marked Pending';
+snd_Spoke.Spec.pendingSpecExceptionMessage = '=&gt; marked Pending';
 
 snd_Spoke.Spec.prototype = {
   type: 'snd_Spoke.Spec',
@@ -736,7 +779,7 @@ snd_Spoke.Spec.prototype = {
     } else {
       this.result.failedExpectations.push(expectationResult);
 
-      if (this.throwOnExpectationFailure && !isError) {
+      if (this.throwOnExpectationFailure &amp;&amp; !isError) {
         throw new snd_Spoke.errors.ExpectationFailed();
       }
     }
@@ -819,7 +862,7 @@ snd_Spoke.Spec.prototype = {
     if (this.markedPending) {
       return 'pending';
     }
-    if (this.result.failedExpectations.length > 0) {
+    if (this.result.failedExpectations.length &gt; 0) {
       return 'failed';
     }
     return 'passed';
@@ -844,7 +887,7 @@ snd_Spoke.Spec.extractCustomPendingMessage = function (e) {
 };
 
 snd_Spoke.Spec.isPendingSpecException = function (e) {
-  return !!(e && e.toString && e.toString().indexOf(snd_Spoke.Spec.pendingSpecExceptionMessage) !== -1);
+  return !!(e &amp;&amp; e.toString &amp;&amp; e.toString().indexOf(snd_Spoke.Spec.pendingSpecExceptionMessage) !== -1);
 };
 
 //==============================================================================
@@ -951,7 +994,7 @@ snd_Spoke.Expectation.addCoreMatchers({
           precision = precision || 2;
         }
         return {
-          pass: Math.abs(expected - actual) < (Math.pow(10, -precision) / 2)
+          pass: Math.abs(expected - actual) &lt; (Math.pow(10, -precision) / 2)
         };
       }
     };
@@ -978,7 +1021,7 @@ snd_Spoke.Expectation.addCoreMatchers({
     return {
       compare: function(actual, expected) {
         return {
-          pass: actual > expected
+          pass: actual &gt; expected
         };
       }
     };
@@ -987,7 +1030,7 @@ snd_Spoke.Expectation.addCoreMatchers({
     return {
       compare: function(actual, expected) {
         return {
-          pass: actual < expected
+          pass: actual &lt; expected
         };
       }
     };
@@ -1061,7 +1104,7 @@ snd_Spoke.Expectation.addCoreMatchers({
   toMatch: function() {
     return {
       compare: function(actual, expected) {
-        if (!snd_Spoke.isString_(expected) && !snd_Spoke.isA_('RegExp', expected) && !snd_Spoke.isA_('SNRegExp', expected)) {
+        if (!snd_Spoke.isString_(expected) &amp;&amp; !snd_Spoke.isA_('RegExp', expected) &amp;&amp; !snd_Spoke.isA_('SNRegExp', expected)) {
           throw new Error('Expected is not a String, RegExp or SNRegExp');
         }
         var regexp = new RegExp(expected);
@@ -1134,7 +1177,7 @@ snd_Spoke.Expectation.addCoreMatchers({
           errorType = expected;
           expected = null;
         }
-      } else if (arguments.length > 2) {
+      } else if (arguments.length &gt; 2) {
         errorType = arguments[1];
         expected = arguments[2];
         if (!isAnErrorType(errorType)) {
@@ -1142,7 +1185,7 @@ snd_Spoke.Expectation.addCoreMatchers({
         }
       }
 
-      if (expected && !isStringOrRegExp(expected)) {
+      if (expected &amp;&amp; !isStringOrRegExp(expected)) {
         if (errorType) {
           throw new Error('Expected error message is not a string or RegExp.');
         } else {
@@ -1180,10 +1223,10 @@ snd_Spoke.Expectation.addCoreMatchers({
           }
         },
         hasNoSpecifics: function() {
-          return expected === null && errorType === null;
+          return expected === null &amp;&amp; errorType === null;
         },
         matches: function(error) {
-          return (errorType === null || error instanceof errorType) &&
+          return (errorType === null || error instanceof errorType) &amp;&amp;
             (expected === null || messageMatch(error.message));
         }
       };
@@ -1273,10 +1316,10 @@ snd_Spoke.PrettyPrinter.prototype = {
         return 'undefined';
       } else if (value === null) {
         return 'null';
-      } else if (value === 0 && 1/value === -Infinity) {
+      } else if (value === 0 &amp;&amp; 1/value === -Infinity) {
         return '-0';
       } else if (value === global) {
-        return '<$global>';
+        return '&lt;$global&gt;';
       } else if (value instanceof Date) {
         return 'Date(' + value + ')';
       } else if (value.toString) {
@@ -1291,7 +1334,7 @@ snd_Spoke.PrettyPrinter.prototype = {
         return type;
       }
     } catch (e) {
-      return '<$error: ' + e + '>';
+      return '&lt;$error: ' + e + '&gt;';
     }
   }
 };
@@ -1307,14 +1350,14 @@ snd_Spoke.prettyPrint = function (value) {
 snd_Spoke.matchersUtil = (function() {
 
   function isAsymmetric(obj) {
-    return obj && snd_Spoke.isA_('Function', obj.asymmetricMatch);
+    return obj &amp;&amp; snd_Spoke.isA_('Function', obj.asymmetricMatch);
   }
 
   function asymmetricMatch(a, b) {
     var asymmetricA = isAsymmetric(a),
         asymmetricB = isAsymmetric(b);
 
-    if (asymmetricA && asymmetricB) {
+    if (asymmetricA &amp;&amp; asymmetricB) {
       return undefined;
     }
 
@@ -1346,7 +1389,7 @@ snd_Spoke.matchersUtil = (function() {
       return asymmetricResult;
     }
 
-    for (var i = 0; i < customTesters.length; i++) {
+    for (var i = 0; i &lt; customTesters.length; i++) {
       var customTesterResult = customTesters[i](a, b);
       if (customTesterResult !== void 0) {
         return customTesterResult;
@@ -1363,7 +1406,7 @@ snd_Spoke.matchersUtil = (function() {
     // undefined cannot be compared using instanceof in ServiceNow
     if (a === undefined || b === undefined) { return a === b; }
 
-    if (a instanceof Error && b instanceof Error) {
+    if (a instanceof Error &amp;&amp; b instanceof Error) {
       return a.message == b.message;
     }
 
@@ -1387,9 +1430,9 @@ snd_Spoke.matchersUtil = (function() {
         return +a == +b;
       // RegExps are compared by their source patterns and flags.
       case '[object RegExp]':
-        return a.source == b.source &&
-          a.global == b.global &&
-          a.multiline == b.multiline &&
+        return a.source == b.source &amp;&amp;
+          a.global == b.global &amp;&amp;
+          a.multiline == b.multiline &amp;&amp;
           a.ignoreCase == b.ignoreCase;
     }
 
@@ -1409,7 +1452,7 @@ snd_Spoke.matchersUtil = (function() {
     var size = 0;
     // Recursively compare objects and arrays.
     // Compare array lengths to determine if a deep comparison is necessary.
-    if (className == '[object Array]' && a.length !== b.length) {
+    if (className == '[object Array]' &amp;&amp; a.length !== b.length) {
       result = false;
     }
 
@@ -1418,8 +1461,8 @@ snd_Spoke.matchersUtil = (function() {
       // or `Array`s from different frames are.
       if (className !== '[object Array]') {
         var aCtor = a.constructor, bCtor = b.constructor;
-        if (aCtor !== bCtor && !(isFunction(aCtor) && aCtor instanceof aCtor &&
-               isFunction(bCtor) && bCtor instanceof bCtor)) {
+        if (aCtor !== bCtor &amp;&amp; !(isFunction(aCtor) &amp;&amp; aCtor instanceof aCtor &amp;&amp;
+               isFunction(bCtor) &amp;&amp; bCtor instanceof bCtor)) {
           return false;
         }
       }
@@ -1429,13 +1472,13 @@ snd_Spoke.matchersUtil = (function() {
           // Count the expected number of properties.
           size++;
           // Deep compare each member.
-          if (!(result = has(b, key) && eq(a[key], b[key], aStack, bStack, customTesters))) { break; }
+          if (!(result = has(b, key) &amp;&amp; eq(a[key], b[key], aStack, bStack, customTesters))) { break; }
         }
       }
       // Ensure that both objects contain the same number of properties.
       if (result) {
         for (key in b) {
-          if (has(b, key) && !(size--)) { break; }
+          if (has(b, key) &amp;&amp; !(size--)) { break; }
         }
         result = !size;
       }
@@ -1458,9 +1501,9 @@ snd_Spoke.matchersUtil = (function() {
       customTesters = customTesters || [];
 
       if ((Object.prototype.toString.apply(haystack) === '[object Array]') ||
-        (!!haystack && !haystack.indexOf))
+        (!!haystack &amp;&amp; !haystack.indexOf))
       {
-        for (var i = 0; i < haystack.length; i++) {
+        for (var i = 0; i &lt; haystack.length; i++) {
           if (eq(haystack[i], needle, [], [], customTesters)) {
             return true;
           }
@@ -1468,7 +1511,7 @@ snd_Spoke.matchersUtil = (function() {
         return false;
       }
 
-      return !!haystack && haystack.indexOf(needle) >= 0;
+      return !!haystack &amp;&amp; haystack.indexOf(needle) &gt;= 0;
     },
 
     buildFailureMessage: function() {
@@ -1484,9 +1527,9 @@ snd_Spoke.matchersUtil = (function() {
         (isNot ? ' not ' : ' ') +
         englishyPredicate;
 
-      if (expected.length > 0) {
-        for (var i = 0; i < expected.length; i++) {
-          if (i > 0) {
+      if (expected.length &gt; 0) {
+        for (var i = 0; i &lt; expected.length; i++) {
+          if (i &gt; 0) {
             message += ',';
           }
           message += ' ' + snd_Spoke.prettyPrint(expected[i]);
@@ -1514,9 +1557,9 @@ snd_Spoke.util = {
     if (!str) {
       return str;
     }
-    return str.replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
+    return str.replace(/&amp;/g, '&amp;amp;')
+      .replace(/&lt;/g, '&amp;lt;')
+      .replace(/&gt;/g, '&amp;gt;');
   },
   isUndefined: function (obj) {
     return obj === void 0;
@@ -1546,9 +1589,9 @@ snd_Spoke.util = {
   },
   contains: function (haystack, needle) {
     if ((Object.prototype.toString.apply(haystack) === '[object Array]') ||
-        (!!haystack && !haystack.indexOf))
+        (!!haystack &amp;&amp; !haystack.indexOf))
       {
-        for (var i = 0; i < haystack.length; i++) {
+        for (var i = 0; i &lt; haystack.length; i++) {
           if (snd_Spoke.util.equals(haystack[i], needle)) {
             return true;
           }
@@ -1556,7 +1599,7 @@ snd_Spoke.util = {
         return false;
       }
 
-      return !!haystack && haystack.indexOf(needle) >= 0;
+      return !!haystack &amp;&amp; haystack.indexOf(needle) &gt;= 0;
   },
   equals: function (actual, expected) {
     // TODO: deep recursive equality check
@@ -1587,7 +1630,7 @@ snd_Spoke.ExceptionFormatter = function () {
     var message = '';
     var line = error.line || error.lineNumber;
 
-    if (error.name && error.message) {
+    if (error.name &amp;&amp; error.message) {
       message += error.name + ': ' + error.message;
     } else {
       message += error.toString() + ' thrown';
@@ -1641,9 +1684,9 @@ snd_Spoke.QueueRunner.prototype = {
     var length = queueableFns.length,
         iterativeIndex;
 
-    for (iterativeIndex = recursiveIndex; iterativeIndex < length; iterativeIndex++) {
+    for (iterativeIndex = recursiveIndex; iterativeIndex &lt; length; iterativeIndex++) {
       var queueableFn = queueableFns[iterativeIndex];
-      if (queueableFn.fn.length > 0) {
+      if (queueableFn.fn.length &gt; 0) {
         //this.attemptAsync(queueableFns, queueableFn, iterativeIndex + 1);
         this.attemptSync(queueableFn);
         this.run(queueableFns, iterativeIndex + 1);
@@ -1653,7 +1696,7 @@ snd_Spoke.QueueRunner.prototype = {
       }
     }
 
-    var runnerDone = iterativeIndex >= length;
+    var runnerDone = iterativeIndex &gt;= length;
 
     if (runnerDone) {
       this.clearStack(this.onComplete);
@@ -1772,7 +1815,7 @@ snd_Spoke.TreeProcessor.prototype = {
   },
 
   runnableIndex: function (id) {
-    for (var i = 0; i < this.runnableIds.length; i++) {
+    for (var i = 0; i &lt; this.runnableIds.length; i++) {
       if (this.runnableIds[i] === id) {
         return i;
       }
@@ -1786,11 +1829,11 @@ snd_Spoke.TreeProcessor.prototype = {
       parentEnabled = true;
     }
 
-    parentEnabled = parentEnabled && node.isExecutable();
+    parentEnabled = parentEnabled &amp;&amp; node.isExecutable();
 
     if (!node.children) {
       this.stats[node.id] = {
-        executable: parentEnabled && node.isExecutable(),
+        executable: parentEnabled &amp;&amp; node.isExecutable(),
         segments: [{
           index: 0,
           owner: node,
@@ -1802,7 +1845,7 @@ snd_Spoke.TreeProcessor.prototype = {
     } else {
       var hasExecutableChild = false;
 
-      for (var i = 0; i < node.children.length; i++) {
+      for (var i = 0; i &lt; node.children.length; i++) {
         var child = node.children[i];
 
         this.processNode(child, parentEnabled);
@@ -1822,7 +1865,7 @@ snd_Spoke.TreeProcessor.prototype = {
 
       this.segmentChildren(node, this.stats[node.id], executableIndex);
 
-      if (!node.canBeReentered() && this.stats[node.id].segments.length > 1) {
+      if (!node.canBeReentered() &amp;&amp; this.stats[node.id].segments.length &gt; 1) {
         this.stats = { valid: false };
       }
     }
@@ -1851,10 +1894,10 @@ snd_Spoke.TreeProcessor.prototype = {
         defaultMax = this.defaultMax;
 
     function isSegmentBoundary(minIndex) {
-      return lastMax !== defaultMax && minIndex !== defaultMin && lastMax < minIndex - 1;
+      return lastMax !== defaultMax &amp;&amp; minIndex !== defaultMin &amp;&amp; lastMax &lt; minIndex - 1;
     }
 
-    for (var i = 0; i < orderedChildSegments.length; i++) {
+    for (var i = 0; i &lt; orderedChildSegments.length; i++) {
       var childSegment = orderedChildSegments[i],
         maxIndex = childSegment.max,
         minIndex = childSegment.min;
@@ -1877,11 +1920,11 @@ snd_Spoke.TreeProcessor.prototype = {
     var specifiedOrder = [],
         unspecifiedOrder = [];
 
-    for (var i = 0; i < children.length; i++) {
+    for (var i = 0; i &lt; children.length; i++) {
       var child = children[i],
           segments = this.stats[child.id].segments;
 
-      for (var j = 0; j < segments.length; j++) {
+      for (var j = 0; j &lt; segments.length; j++) {
         var seg = segments[j];
 
         if (seg.min === this.defaultMin) {
@@ -1930,7 +1973,7 @@ snd_Spoke.TreeProcessor.prototype = {
     var result = [],
         segmentChildren = this.stats[node.id].segments[segmentNumber].nodes;
 
-    for (var i = 0; i < segmentChildren.length; i++) {
+    for (var i = 0; i &lt; segmentChildren.length; i++) {
       result.push(this.executeNode(segmentChildren[i].owner, segmentChildren[i].index));
     }
 
@@ -2002,7 +2045,7 @@ snd_Spoke.Reporter.prototype = {
     if (!this.current.hasOwnProperty('failed_expectations')) {
       this.current.failed_expectations = [];
     }
-    for(var i = 0; i < result.failedExpectations.length; i++) {
+    for(var i = 0; i &lt; result.failedExpectations.length; i++) {
       this.current.failed_expectations.push(result.failedExpectations[i].message);
     }
 
@@ -2087,13 +2130,13 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
   function getCurrentScope(gr) {
     var name;
 
-    if (glide_record.sys_scope && !glide_record.sys_scope.nil()) {
+    if (glide_record.sys_scope &amp;&amp; !glide_record.sys_scope.nil()) {
       return glide_record.sys_scope;
     }
 
     name = gs.getCurrentScopeName();
     gr = new GlideRecord('sys_scope');
-    if (name && name != 'rhino.global') {
+    if (name &amp;&amp; name != 'rhino.global') {
       gr.addQuery('scope', '=', name);
       gr.setLimit(1);
       gr.query();
@@ -2142,4 +2185,1199 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
 
   gse = new GlideScopedEvaluator();
   return gse.evaluateScript(test, 'script');
-};
+};]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;james@sndeveloper.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-06-03 04:59:03&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;fecfa9990f37120094f3c09ce1050ee2&lt;/sys_id&gt;&lt;sys_mod_count&gt;59&lt;/sys_mod_count&gt;&lt;sys_name&gt;snd_Spoke&lt;/sys_name&gt;&lt;sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="SND Spoke"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_fecfa9990f37120094f3c09ce1050ee2&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@sndeveloper.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-08-02 15:01:12&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+<remote_update_set display_value="SND Spoke - 1.2">8bb201340f41aa0094f3c09ce1050e05</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@sndeveloper.com</sys_created_by>
+<sys_created_on>2016-08-02 15:41:20</sys_created_on>
+<sys_id>03b201340f41aa0094f3c09ce1050e06</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@sndeveloper.com</sys_updated_by>
+<sys_updated_on>2016-08-02 15:41:20</sys_updated_on>
+<table/>
+<target_name>snd_Spoke</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
+<category>customer</category>
+<comments/>
+<name>sys_app_application_f88f2d990f37120094f3c09ce1050e7a</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_application"><sys_app_application action="INSERT_OR_UPDATE"><active>true</active><category/><description/><device_type>browser</device_type><hint/><name>SND Spoke</name><order/><roles>admin</roles><sys_class_name>sys_app_application</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-06-03 04:55:27</sys_created_on><sys_customer_update>true</sys_customer_update><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>f88f2d990f37120094f3c09ce1050e7a</sys_id><sys_mod_count>1</sys_mod_count><sys_name>SND Spoke</sys_name><sys_overrides/><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_app_application_f88f2d990f37120094f3c09ce1050e7a</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-06-03 04:55:27</sys_updated_on><title>SND Spoke</title><view_name/></sys_app_application></record_update>]]></payload>
+<remote_update_set display_value="SND Spoke - 1.2">8bb201340f41aa0094f3c09ce1050e05</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@sndeveloper.com</sys_created_by>
+<sys_created_on>2016-08-02 15:41:20</sys_created_on>
+<sys_id>0fb201340f41aa0094f3c09ce1050e05</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@sndeveloper.com</sys_updated_by>
+<sys_updated_on>2016-08-02 15:41:20</sys_updated_on>
+<table/>
+<target_name>SND Spoke</target_name>
+<type>Application Menu</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
+<category>customer</category>
+<comments/>
+<name>sys_ui_macro_537075d50f37120094f3c09ce1050eb2</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ui_macro"&gt;&lt;sys_ui_macro action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;category&gt;general&lt;/category&gt;&lt;description&gt;Spoke test framework interface&lt;/description&gt;&lt;media_type/&gt;&lt;name&gt;snd_spoke_ui&lt;/name&gt;&lt;scoped_name/&gt;&lt;sys_class_name&gt;sys_ui_macro&lt;/sys_class_name&gt;&lt;sys_created_by&gt;james@sndeveloper.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-06-03 05:00:20&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;537075d50f37120094f3c09ce1050eb2&lt;/sys_id&gt;&lt;sys_mod_count&gt;76&lt;/sys_mod_count&gt;&lt;sys_name&gt;snd_spoke_ui&lt;/sys_name&gt;&lt;sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="SND Spoke"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_macro_537075d50f37120094f3c09ce1050eb2&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@sndeveloper.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-08-02 15:39:51&lt;/sys_updated_on&gt;&lt;xml&gt;&lt;![CDATA[${DOCTYPE}
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+
+    &lt;title&gt;Spoke Test Framework&lt;/title&gt;
+
+    &lt;link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        rel="stylesheet" crossorigin="anonymous"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" /&gt;
+
+    &lt;style type="text/css"&gt;
+      #result_body ul {
+        list-style: none;
+      }
+      #result_body li span.glyphicon {
+        margin-left: -2em;
+        margin-right: 0.7em;
+      }
+      .interactive {
+        cursor: pointer;
+      }
+      .panel-heading h3 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: normal;
+        width: 75%;
+        /*padding-top: 8px; FOR BUTTONS */
+      }
+      .panel-heading .btn-open {
+        padding: 0px 4px;
+      }
+      #result_body .panel-heading {
+        padding: 4px 15px;
+      }
+      #result_body .panel-heading .panel-title {
+        font-size: 14px;
+        font-weight: 600;
+        padding-right: 4px;
+      }
+      #result_body .panel-heading .time {
+        margin-top: 7px;
+      }
+    &lt;/style&gt;
+
+    &lt;script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"&gt;&lt;/script&gt;
+
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;nav id="header" class="navbar navbar-static-top navbar-inverse"&gt;
+      &lt;div class="container"&gt;
+        &lt;div class="navbar-header"&gt;
+          &lt;button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#navbar" aria-expanded="false" aria-controls="navbar"&gt;
+            &lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+          &lt;/button&gt;
+          &lt;a class="navbar-brand" href="#/"&gt;Spoke&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div id="navbar" class="navbar-collapse collapse"&gt;
+          &lt;!--ul class="nav navbar-nav"&gt;
+            &lt;li&gt;&lt;a href="#/"&gt;
+              &lt;span class="glyphicon glyphicon-th-list"&gt;&lt;/span&gt;
+              My Lists&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;ul class="nav navbar-nav navbar-right"&gt;
+            &lt;li&gt;&lt;a class="interactive"&gt;
+              &lt;span class="glyphicon glyphicon-question-sign"&gt;&lt;/span&gt;
+              Help&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul--&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;div class="container"&gt;
+      &lt;div class="row"&gt;
+        &lt;div class="col-xs-12"&gt;
+          &lt;div class="panel panel-default"&gt;
+            &lt;div class="panel-body"&gt;
+              &lt;h3&gt;Spoke Test Runner&lt;br /&gt;&lt;small&gt;Behavioural testing in ServiceNow&lt;/small&gt;&lt;/h3&gt;
+              &lt;hr /&gt;
+              &lt;table class="table table-striped table-bordered"&gt;
+                &lt;tr&gt;
+                  &lt;th class="col-xs-4 col-sm-3"&gt;Application:&lt;/th&gt;
+                  &lt;td&gt;${APP_NAME}&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;th class="col-xs-4 col-sm-3"&gt;Version:&lt;/th&gt;
+                  &lt;td&gt;${APP_VERSION}&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;th class="col-xs-4 col-sm-3"&gt;Description:&lt;/th&gt;
+                  &lt;td&gt;${APP_DESC}&lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/table&gt;
+            &lt;/div&gt;
+            &lt;div class="panel-footer"&gt;
+              &lt;div class="row"&gt;
+                &lt;div class="col-sm-6"&gt;
+                  &lt;h5 class="" id="result_title" style="display: none"&gt;&lt;/h5&gt;
+                &lt;/div&gt;
+                &lt;div class="col-sm-6"&gt;
+                  &lt;div class="text-right"&gt;
+                    &lt;button id="get_btn" class="btn btn-default"&gt;&lt;span class="glyphicon glyphicon-search"&gt;&lt;/span&gt; Show specs&lt;/button&gt;
+                    &lt;button id="run_btn" class="btn btn-success"&gt;&lt;span class="glyphicon glyphicon-play"&gt;&lt;/span&gt;
+                    &lt;span id="run_btn_text"&gt;Execute All&lt;/span&gt;&lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class="row"&gt;
+        &lt;div class="col-xs-12"
+         id="result_body" style="display: none"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;script type="text/javascript"&gt;
+      var SYSPARM_CK = '${SYSPARM_CK}';
+      var MAX_ATTACH_SIZE = '${MAX_ATTACH_SIZE}';
+    &lt;/script&gt;
+
+    &lt;script type="text/javascript"&gt;
+
+      var url_params={};window.location.search.replace(/[?${AMP}]+([^=${AMP}]+)=([^${AMP}]*)/gi,function(str,key,value){url_params[key] = value;});
+
+      function togglePanel(forTitle) {
+        $(forTitle).parent().next('.panel-body').toggle();
+      }
+
+      var spoke_client = (function () {
+
+        var $result_title = $('#result_title');
+        var $result_body = $('#result_body');
+
+        function renderNode(node) {
+          var p, li, ul, i, fails, class_name, icon;
+
+          if (node.type == 'spec') {
+            switch (node.status) {
+              case 'passed':
+                class_name = 'text-success';
+                icon = 'ok-circle';
+                break;
+              case 'disabled':
+              case 'pending':
+                class_name = 'text-warning';
+                icon = 'ban-circle';
+                if (node.pendingReason) {
+                  node.description += ' PENDING WITH MESSAGE: ' + node.pendingReason;
+                }
+                break;
+              case 'failed':
+                class_name = 'text-danger';
+                icon = 'remove-circle';
+                break;
+            }
+          } else {
+            class_name = '';
+            icon = 'list';
+          }
+
+          icon = '&lt;span class="small glyphicon glyphicon-' + icon + '"&gt;&lt;/span&gt; ';
+
+          li = $('&lt;li&gt;&lt;/li&gt;');
+          li.append('&lt;p class="' + class_name + '"&gt;' + icon + node.description + ' &lt;small class="pull-right"&gt;(' + node.execution_time + 'ms)&lt;/small&gt;&lt;/p&gt;');
+
+          if (node.status != 'pending') {
+            if (node.hasOwnProperty('failed_expectations')) {
+              if (node.failed_expectations.length) {
+                fails = $('&lt;table class="table table-striped table-bordered small"&gt;&lt;/table&gt;');
+                for (i = 0; node.failed_expectations.length &gt; i; i++) {
+                  fails.append('&lt;tr class="warning"&gt;&lt;td&gt;' + node.failed_expectations[i] + '&lt;/td&gt;&lt;/tr&gt;');
+                }
+                li.append(fails);
+              }
+            }
+          }
+
+          if (node.hasOwnProperty('children')) {
+            if (node.children.length) {
+              ul = $('&lt;ul&gt;&lt;/ul&gt;');
+              for (i = 0; node.children.length &gt; i; i++) {
+                ul.append(renderNode(node.children[i]));
+              }
+              li.append(ul);
+            }
+          }
+
+          return li;
+        }
+
+        function renderResults(results) {
+          var ul, i, j, suite,
+              $panel_title,
+              $panel_body,
+              details,
+              api_name;
+
+          $result_title.text('Testing ' + results.status + '. ' +
+            results.total_specs + ' spec' + (results.total_specs == 1 ? '' : 's') +
+            ', ' + results.failed_specs + ' failed.');
+
+          if (results.failed_specs &gt; 0) {
+            $result_title.removeClass('text-success text-warning').addClass('text-danger');
+          } else if (results.status == 'ignored') {
+            $result_title.removeClass('text-success text-danger').addClass('text-warning');
+          } else {
+            $result_title.removeClass('text-warning text-danger').addClass('text-success');
+          }
+
+          if (!results.suites) return;
+          for (i = 0; results.suites.length &gt; i; i++) {
+            suite = results.suites[i];
+            details = results.details[i];
+            api_name = results.details[i].api_name;
+
+            $panel =
+                $('&lt;div class="panel"&gt;&lt;div class="panel-heading"&gt;' +
+                    '&lt;a href="' + api.getExecuteLink(api_name) + '" onclick="spoke_client.executeTests(\'' + api_name + '\'); return false" title="Execute" class="btn btn-link btn-open"&gt;' +
+                      '&lt;span class="glyphicon glyphicon-play"&gt;&lt;/span&gt; &lt;span class="sr-only"&gt;Execute&lt;/span&gt;&lt;/a&gt;' +
+                    '&lt;a href="/sys_script_include.do?sys_id=' + details.sys_id + '" onclick="$.Event(event).stopPropagation();" target="' + details.sys_id + '" title="Edit" class="btn btn-link btn-open"&gt;' +
+                      '&lt;span class="glyphicon glyphicon-edit"&gt;&lt;/span&gt; &lt;span class="sr-only"&gt;Edit&lt;/span&gt;&lt;/a&gt;' +
+                    '&lt;span class="btn btn-link panel-title" onclick="togglePanel(this);"&gt;' + suite.description + '&lt;/span&gt;' +
+                    '&lt;small class="pull-right"&gt;(' + suite.execution_time + 'ms)&lt;/small&gt;' +
+                    '&lt;div class="clearfix"&gt;&lt;/div&gt;' +
+                  '&lt;/div&gt;&lt;/div&gt;');
+            $panel_body = $('&lt;div class="panel-body"&gt;&lt;/div&gt;');
+
+            if (suite.hasOwnProperty('children')) {
+              ul = $('&lt;ul&gt;&lt;/ul&gt;');
+              for (j = 0; suite.children.length &gt; j; j++) {
+                ul.append(renderNode(suite.children[j]));
+              }
+              $panel_body.append(ul);
+            }
+
+            if ($panel_body.find('.text-danger').length) {
+              $panel.addClass('panel-danger');
+            } else {
+              $panel.addClass('panel-success');
+              if (results.suites.length &gt; 1) $panel_body.hide();
+            }
+
+            $panel.append($panel_body);
+            $result_body.append($panel);
+          }
+
+        }
+
+        function renderSpecs(specs) {
+          var $list_group,
+              $panel,
+              spec,
+              i;
+
+          $result_title.text('Found ' + specs.length + ' spec' + (specs.length == 1 ? '' : 's'));
+          if (specs.length) {
+            $result_title.removeClass('text-warning text-danger').addClass('text-success');
+          } else {
+            $result_title.removeClass('text-success text-danger').addClass('text-warning');
+            return;
+          }
+
+          $list_group = $('&lt;div class="list-group"&gt;&lt;/div&gt;');
+          for (i = 0; specs.length &gt; i; i++) {
+            spec = specs[i];
+            $item =
+                '&lt;div class="list-group-item list-group-item-warning"&gt;' +
+                  spec.name +
+                  '&lt;div class="pull-right"&gt;' +
+                    '&lt;a class="btn btn-link" href="/sys_script_include.do?sys_id=' + spec.sys_id + '" target="' + spec.sys_id + '"&gt;' +
+                      '&lt;span class="glyphicon glyphicon-edit"&gt;&lt;/span&gt; Edit&lt;/a&gt;' +
+                    '&lt;a class="btn btn-success" onclick="spoke_client.executeTests(\'' + spec.api_name + '\'); return false" href="' + api.getExecuteLink(spec.api_name) + '"&gt;' +
+                      '&lt;span class="glyphicon glyphicon-play"&gt;&lt;/span&gt; Execute&lt;/a&gt;' +
+                  '&lt;/div&gt;' +
+                  '&lt;div class="small"&gt;Updated: ' + spec.updated + '&lt;/div&gt;' +
+                '&lt;/div&gt;';
+            $list_group.append($item);
+          }
+          $result_body.append($list_group);
+        }
+
+        var api = {};
+
+        api.current_script = url_params.script;
+
+        api.getAvailableSpecs = function () {
+          var url = ['?action=getAvailableSpecs'];
+          if ('sys_scope' in url_params) url.push('sys_scope=' + url_params.sys_scope);
+          api.current_script = '';
+          return api.run(url.join('${AMP}'), function (data) {
+            if (data.$success) {
+              renderSpecs(data.specs);
+              $result_title.show();
+              $result_body.show();
+            } else {
+              alert('AJAX operation failed: ' + data.$error);
+            }
+          });
+        };
+
+        api.getExecuteLink = function (script) {
+          var url = ['?action=executeTests'];
+          if ('sys_scope' in url_params) url.push('sys_scope=' + url_params.sys_scope);
+          if (script) url.push('script=' + script);
+          return url.join('${AMP}');
+        };
+
+        api.executeTests = function (script) {
+          if (arguments.length &gt; 0) api.current_script = script;
+          return api.run(api.getExecuteLink(api.current_script), function (data) {
+            if (data.$success) {
+              renderResults(data.results);
+              $result_title.show();
+              $result_body.show();
+            } else {
+              alert('AJAX operation failed: ' + data.$error);
+            }
+          });
+        };
+
+        api.run = function (url, callback) {
+
+          $result_title.removeClass().addClass('text-primary').text('Running...');
+
+          url += '${AMP}sysparm_ck=' + SYSPARM_CK;
+
+          $('#run_btn').prop('disabled', true)
+          $('#get_btn').prop('disabled', true);
+
+          $result_body.empty();
+
+
+          return $.ajax({
+            url: url,
+            dataType: 'json',
+            statusCode: {
+              401: function () {
+                window.location.reload();
+              }
+            }
+          }).then(callback, function (xhr) {
+            alert('Failed to execute AJAX request to run tests.');
+          }).then(function () {
+            $('#run_btn').prop('disabled', false);
+            $('#run_btn_text').text(spoke_client.current_script ? 'Execute' : 'Execute All');
+            $('#get_btn').prop('disabled', false);
+          });
+        }
+
+        return api;
+      })();
+
+      $('#run_btn').click(function () {
+        $('#run_btn_text').text('Running...');
+        spoke_client.executeTests();
+      });
+
+      $('#get_btn').click(function () {
+        spoke_client.getAvailableSpecs();
+      });
+
+      // if no script has been requested then show the available specs
+      if (!url_params.script) {
+        spoke_client.getAvailableSpecs();
+      }
+
+    &lt;/script&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;]]&gt;&lt;/xml&gt;&lt;/sys_ui_macro&gt;&lt;/record_update&gt;</payload>
+<remote_update_set display_value="SND Spoke - 1.2">8bb201340f41aa0094f3c09ce1050e05</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@sndeveloper.com</sys_created_by>
+<sys_created_on>2016-08-02 15:41:20</sys_created_on>
+<sys_id>43b201340f41aa0094f3c09ce1050e06</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@sndeveloper.com</sys_updated_by>
+<sys_updated_on>2016-08-02 15:41:20</sys_updated_on>
+<table/>
+<target_name>snd_spoke_ui</target_name>
+<type>Macro</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
+<category>customer</category>
+<comments/>
+<name>sys_app_module_77c071d90f37120094f3c09ce1050ecc</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="SND Spoke">f88f2d990f37120094f3c09ce1050e7a</application><assessment/><content_page/><device_type/><filter/><hint>Spoke - the BDD test utility</hint><homepage/><image/><link_type>DIRECT</link_type><map_page/><mobile_title>Spoke</mobile_title><mobile_view_name>Mobile</mobile_view_name><name/><order/><override_menu_roles>false</override_menu_roles><query>/snd_spoke.do</query><report/><roles/><survey/><survey_overwrite>true</survey_overwrite><sys_class_name>sys_app_module</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-06-03 05:01:57</sys_created_on><sys_customer_update>true</sys_customer_update><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>77c071d90f37120094f3c09ce1050ecc</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Spoke</sys_name><sys_overrides/><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_app_module_77c071d90f37120094f3c09ce1050ecc</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-06-03 05:01:57</sys_updated_on><timeline_page/><title>Spoke</title><uncancelable>false</uncancelable><view_name/><window_name>_blank</window_name></sys_app_module></record_update>]]></payload>
+<remote_update_set display_value="SND Spoke - 1.2">8bb201340f41aa0094f3c09ce1050e05</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@sndeveloper.com</sys_created_by>
+<sys_created_on>2016-08-02 15:41:20</sys_created_on>
+<sys_id>4fb201340f41aa0094f3c09ce1050e05</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@sndeveloper.com</sys_updated_by>
+<sys_updated_on>2016-08-02 15:41:20</sys_updated_on>
+<table/>
+<target_name>Spoke</target_name>
+<type>Module</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
+<category>customer</category>
+<comments/>
+<name>sys_processor_369f6d990f37120094f3c09ce1050e0d</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_processor"&gt;&lt;sys_processor action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;class_name/&gt;&lt;description/&gt;&lt;interactive&gt;false&lt;/interactive&gt;&lt;name&gt;snd_spoke&lt;/name&gt;&lt;parameters/&gt;&lt;params_endpoint/&gt;&lt;path&gt;snd_spoke&lt;/path&gt;&lt;path_endpoint/&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[/*!
+  Processor for generating the user interface and handling AJAX calls.
+*/
+(function () {
+
+  snd_console = typeof snd_console === 'object' ? snd_console : {};
+
+  // The scope of our application. Prepended to UI Macro's, etc.
+  // Prevents misuse of this processor.
+  var APP_SCOPE = gs.getCurrentScopeName() != 'rhino.global' ?
+              gs.getCurrentScopeName() : 'global';
+
+  var USER_SCOPE = '' + (g_request.getParameter('sys_scope') || APP_SCOPE);
+
+  // the initial UI file to serve
+  var UI_MAIN = (APP_SCOPE !== 'global' ? APP_SCOPE + '_' : '')  + 'snd_spoke_ui';
+
+  // The name of the macro to render when access is denied.
+  var UI_403 = '403.html';
+
+  // Variables to inject into UI Macros
+  var MACRO_VARS = {
+
+    // The doctype to prepend to the UI file
+    'DOCTYPE': '&lt;!doctype html&gt;',
+
+    // required for attachments to work with glide.security.use_csrf_token on
+    'SYSPARM_CK': APP_SCOPE !== 'global' ? gs.getSession().getSessionToken() : gs.getSessionToken(),
+
+    // The maximum attachment size that a user can upload
+    'MAX_ATTACH_SIZE': (function () {
+      var max = gs.getProperty('com.glide.attachment.max_size');
+      if (!max) max = 1000;
+      else max = parseInt(max, 10);
+      if (isNaN(max)) { max = 20; }
+      return max + 'MB';
+    })(),
+
+    'AMP': '&amp;'
+  };
+
+  var NO_CSRF_CHECK = ['executeTests', 'getAvailableSpecs'];
+
+  // populate the application detail variables
+  (function () {
+    var gr = new GlideRecord('sys_scope');
+    if (USER_SCOPE !== 'global') {
+      gr.addQuery('scope', '=', USER_SCOPE);
+      gr.setLimit(1);
+      gr.query();
+      gr.next();
+    } else {
+      gr.name = 'Global';
+      gr.short_description = 'The global scope.';
+      gr.version = 'N/A';
+    }
+
+    MACRO_VARS.APP_NAME = gr.getValue('name');
+    MACRO_VARS.APP_DESC = gr.getValue('short_description');
+    MACRO_VARS.APP_VERSION = gr.getValue('version');
+  })();
+
+  var json = new global.JSON();
+
+  // Makes the parameters passed to the request easily av
+  var params = (function () {
+    var names = g_request.getParameterNames(),
+        params = {},
+        name,
+        i;
+
+    if (APP_SCOPE !== 'global') {
+      for (i = 0; i &lt; names.length; i++) {
+        name = names[i];
+        params[name] = '' + g_request.getParameter(name);
+      }
+    } else {
+      while (names.hasMoreElements()) {
+        name = names.nextElement();
+        params[name] = '' + g_request.getParameter(name);
+      }
+    }
+    if (params.data) {
+      params.data = json.decode(params.data);
+    }
+    return params;
+  })();
+
+  function hasAccess() {
+    return gs.hasRole('admin');
+  }
+
+  function isValidRequest(action) {
+    // prevent CSRF
+    var i;
+    if (params.sysparm_ck) {
+      return params.sysparm_ck == MACRO_VARS.SYSPARM_CK;
+    }
+    for (i = 0; i &lt; NO_CSRF_CHECK.length; i++) {
+      if (NO_CSRF_CHECK[i] == action) return true;
+    }
+    return false;
+  }
+
+  function executeTests(params) {
+    var reporter,
+        data,
+        gr;
+
+    gr = new GlideRecord('sys_script_include');
+
+    if (params.script) {
+      gr.addQuery('api_name', '=', params.script);
+    } else {
+      gr.addQuery('api_name', 'STARTSWITH', USER_SCOPE + '.');
+      gr.addQuery('api_name', 'ENDSWITH', '_spec');
+    }
+    gr.addQuery('active', '=', true);
+    gr.orderBy('name');
+    gr.query();
+
+    reporter = snd_Spoke.executeFromScripts(gr, 'script');
+
+    if (!reporter) {
+      throw 'Execution failed. Could be a scope issue?';
+    }
+
+    data = {};
+    data.details = reporter.details;
+    data.failed_specs = reporter.failed_specs;
+    data.suites = reporter.tree.children;
+    data.total_specs = reporter.total_specs;
+    data.status = reporter.status;
+    if (reporter.error) data.error = reporter.error;
+
+    return data;
+  }
+
+  function getAvailableSpecs(params) {
+    var gr,
+        result;
+    gr = new GlideRecord('sys_script_include');
+    gr.addQuery('api_name', 'STARTSWITH', USER_SCOPE + '.');
+    gr.addQuery('api_name', 'ENDSWITH', '_spec');
+    gr.addQuery('active', '=', true);
+    gr.orderBy('name');
+    gr.query();
+
+    result = [];
+    while (gr.next()) {
+      result.push({
+        name: gr.getValue('name'),
+        api_name: gr.getValue('api_name'),
+        updated: gr.sys_updated_on.getDisplayValue(),
+        sys_id: gr.getValue('sys_id')
+      });
+    }
+
+    return result;
+  }
+
+  /**
+    summary:
+      A simple request handler that takes an action and data object.
+    param: action [String]
+      A keyword that can be used to determine the request.
+    param: data [mixed]
+      Arbitrary data object for use with processing.
+  **/
+  function processAction(params) {
+    var result = {},
+        name = params.action,
+        start_time,
+        errors,
+        data,
+        exf = new snd_Spoke.ExceptionFormatter();
+
+    start_time = new Date().getTime();
+
+    result.$success = true;
+
+    try {
+      switch (name) {
+        case 'executeTests':
+          result.results = executeTests(params);
+          break;
+        case 'getAvailableSpecs':
+          result.specs = getAvailableSpecs(params);
+          break;
+        default:
+          result.$success = false;
+          result.$error = 'Invalid action name: \'' + name + '\'';
+      }
+
+      errors = snd_console.get ? snd_console.get({type: 'error'}) : [];
+      if (errors.length) {
+        result.$success = false;
+        result.$error = errors.pop();
+      }
+
+    } catch (e) {
+      result.$success = false;
+      result.$error = exf.message(e);
+      result.$stack = exf.stack(e);
+    }
+
+    result.$time = (new Date().getTime()) - start_time;
+
+    if ((snd_console.DEBUG || 'debug_mode' in params) &amp;&amp; snd_console.getStrings) {
+      result.$snd_console = snd_console.getStrings();
+    }
+
+    return result;
+  }
+
+  /**
+    summary:
+      Process a template from a UI Macro and return the output.
+    param: name [String]
+      The name of the UI Macro to use.
+    param: vars [Object] Optional
+      An object of variables to pass to replace in the macro.
+      Variables should be in the format `${variable_name}`
+    returns: String
+  **/
+  function processTemplate(name, vars) {
+
+    /**
+      summary:
+        Simple wrapper to get a single GlideRecord object
+      param: table [String]
+      param: query [String]
+      returns: GlideRecord
+    **/
+    function getRecord(table, query) {
+      var gr = new GlideRecord(table);
+      gr.addEncodedQuery(query);
+      gr.setLimit(1);
+      gr.query();
+      return gr.next() ? gr : false;
+    }
+
+    /**
+      summary:
+        Replaces ${variable} formatted variables in a string with the variable
+        value.
+      param: str [String]
+      param: vars [Object] Optional
+      returns: String
+    **/
+    function replaceVars(str, vars) {
+      if (typeof vars == 'object') {
+        str = str.replace(/\$\{\s*(\w+)\s*\}/g, function (m, word) {
+          return vars.hasOwnProperty(word) ? vars[word] || '' : m;
+        });
+      }
+      return str;
+    }
+
+    /**
+      summary:
+        Automagically set the versions on database Style Sheets and UI Scripts
+      description:
+        Searchs for links matching the cssdbx or jsdbx format.
+        Stylesheets can be referenced by their name (normally sys_id).
+        Replaces links with cache aware versions.
+      param: html [String]
+        The HTML template to work with.
+      returns: String
+        The modified HTML.
+    **/
+    function setScriptVersions(html) {
+
+      function substrReplace(str, i, what, len) {
+        return str.substr(0, i) + what + str.substr(i + (len || what.length));
+      }
+
+      function appendTime(html, match, map) {
+        var gr, updated;
+
+        gr = getRecord(map.table, map.key + '=' + match[1]);
+        if (gr) {
+          updated = new GlideDateTime(gr.sys_updated_on).getNumericValue();
+          html = substrReplace(
+              html,
+              match.index,
+              gr[map.val] + '.' + match[2] + '?v=' + updated,
+              match[0].length);
+        }
+
+        return html;
+      }
+
+      var regexp = /([a-zA-Z0-9_.\-]*)\.(cssdbx|jsdbx)/g,
+          key_map = {
+            'jsdbx':  {table: 'sys_ui_script', key: 'name', val: 'name'},
+            'cssdbx': {table: 'content_css',   key: 'name', val: 'sys_id'}
+          },
+          map,
+          match;
+
+      while ((m = regexp.exec(html))) {
+        if (key_map.hasOwnProperty(m[2])) {
+          html = appendTime(html, m, key_map[m[2]]);
+        }
+      }
+
+      return html;
+    }
+
+    var field = APP_SCOPE === 'global' ? 'name' : 'scoped_name',
+        macro = getRecord('sys_ui_macro', field + '=' + name),
+        output = '';
+    if (macro) {
+      output = replaceVars(macro.xml.toString(), vars);
+      output = setScriptVersions(output);
+    } else {
+      output = 'Macro ' + name + ' does not exist.';
+    }
+    return output;
+  }
+
+  var response;
+
+  // check the user has the role to access
+  if (!hasAccess()) {
+    g_response.setStatus(403); // forbidden
+    response = processTemplate(UI_403, MACRO_VARS);
+    if (response) {
+      g_processor.writeOutput('text/html', response);
+    } else {
+      g_processor.writeOutput('text/plain', 'Error: access restricted.');
+    }
+  }
+
+  // prevent CSRF - all requests have valid sysparm_ck
+  else if (params.action &amp;&amp; !isValidRequest(params.action)) {
+    g_response.setStatus(401);
+    g_processor.writeOutput('text/plain', 'Authentication is not valid.');
+  }
+
+  // process the action that has been requested by the browser
+  else if (params.action) {
+    response = processAction(params);
+    g_processor.writeOutput('application/json', json.encode(response));
+  }
+
+  // ensure requested template is valid for this scope
+  else if (params.hasOwnProperty('template') &amp;&amp; (APP_SCOPE === 'global' || params.template.indexOf(APP_SCOPE) !== 0)) {
+    g_processor.writeOutput('text/plain', 'Invalid template requested; ' +
+        'not in application scope: ' + params.template);
+  }
+
+  // send the requested template or the main interface
+  else {
+    response = processTemplate(params.template || UI_MAIN, MACRO_VARS);
+    g_processor.writeOutput('text/html', response);
+  }
+
+})();]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_processor&lt;/sys_class_name&gt;&lt;sys_created_by&gt;james@sndeveloper.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-06-03 04:56:11&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;369f6d990f37120094f3c09ce1050e0d&lt;/sys_id&gt;&lt;sys_mod_count&gt;21&lt;/sys_mod_count&gt;&lt;sys_name&gt;snd_spoke&lt;/sys_name&gt;&lt;sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="SND Spoke"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_processor_369f6d990f37120094f3c09ce1050e0d&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@sndeveloper.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-08-02 10:19:53&lt;/sys_updated_on&gt;&lt;type&gt;script&lt;/type&gt;&lt;/sys_processor&gt;&lt;/record_update&gt;</payload>
+<remote_update_set display_value="SND Spoke - 1.2">8bb201340f41aa0094f3c09ce1050e05</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@sndeveloper.com</sys_created_by>
+<sys_created_on>2016-08-02 15:41:20</sys_created_on>
+<sys_id>8fb201340f41aa0094f3c09ce1050e05</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@sndeveloper.com</sys_updated_by>
+<sys_updated_on>2016-08-02 15:41:20</sys_updated_on>
+<table/>
+<target_name>snd_spoke</target_name>
+<type>Processor</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
+<category>customer</category>
+<comments/>
+<name>sys_app_3c8f6d590f37120094f3c09ce1050ea0</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_app"><sys_app action="INSERT_OR_UPDATE"><active>true</active><licensable>true</licensable><logo/><menu display_value="SND Spoke">f88f2d990f37120094f3c09ce1050e7a</menu><name>SND Spoke</name><scope>global</scope><short_description>Behaviour driven development in ServiceNow</short_description><source>3c8f6d590f37120094f3c09ce1050ea0</source><store_correlation_id/><store_url/><sys_class_name>sys_app</sys_class_name><sys_code/><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-06-03 04:55:27</sys_created_on><sys_id>3c8f6d590f37120094f3c09ce1050ea0</sys_id><sys_mod_count>5</sys_mod_count><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-08-02 15:36:00</sys_updated_on><template/><user_role display_value="admin" name="admin">2831a114c611228501d4ea6c309d626d</user_role><vendor/><vendor_prefix/><version>1.2</version></sys_app></record_update>]]></payload>
+<remote_update_set display_value="SND Spoke - 1.2">8bb201340f41aa0094f3c09ce1050e05</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@sndeveloper.com</sys_created_by>
+<sys_created_on>2016-08-02 15:41:20</sys_created_on>
+<sys_id>cbb201340f41aa0094f3c09ce1050e05</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@sndeveloper.com</sys_updated_by>
+<sys_updated_on>2016-08-02 15:41:20</sys_updated_on>
+<table/>
+<target_name>SND Spoke</target_name>
+<type>Custom Application</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_9e50bd590f37120094f3c09ce1050e8f</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;package_private&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.snd_Spoke_spec&lt;/api_name&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;description&gt;Tests for Spoke - the BDD Framework for ServiceNow - based on Jasmine&amp;#13;
+These are the Jasmine unit tests from http://jasmine.github.io/2.4/introduction.html&lt;/description&gt;&lt;name&gt;snd_Spoke_spec&lt;/name&gt;&lt;script&gt;&lt;![CDATA[/*!
+  Tests for Spoke - the BDD Framework for ServiceNow - based on Jasmine
+  These are the Jasmine unit tests from http://jasmine.github.io/2.4/introduction.html
+*/
+
+// Introduction
+describe("A suite", function() {
+  it("contains spec with an expectation", function() {
+    expect(true).toBe(true);
+  });
+});
+
+// Specs
+describe("A suite is just a function", function() {
+  var a = true;
+  it("and so is a spec", function() {
+    expect(a).toBe(true);
+  });
+});
+
+// Expectations
+describe("The 'toBe' matcher compares with ===", function() {
+  it("and has a positive case", function() {
+    expect(true).toBe(true);
+  });
+  it("and can have a negative case", function() {
+    expect(false).not.toBe(true);
+  });
+});
+
+// Included Matchers
+describe("Included matchers:", function() {
+
+  it("The 'toBe' matcher compares with ===", function() {
+    var a = 12;
+    var b = a;
+
+    expect(a).toBe(b);
+    expect(a).not.toBe(null);
+  });
+
+  describe("The 'toEqual' matcher", function() {
+
+    it("works for simple literals and variables", function() {
+      var a = 12;
+      expect(a).toEqual(12);
+    });
+
+    it("should work for objects", function() {
+      var foo = {
+        a: 12,
+        b: 34
+      };
+      var bar = {
+        a: 12,
+        b: 34
+      };
+      expect(foo).toEqual(bar);
+    });
+  });
+
+  it("The 'toMatch' matcher is for regular expressions", function() {
+    var message = "foo bar baz";
+
+    expect(message).toMatch(/bar/);
+    expect(message).toMatch("bar");
+    expect(message).not.toMatch(/quux/);
+  });
+
+  it("The 'toBeDefined' matcher compares against `undefined`", function() {
+    var a = {
+      foo: "foo"
+    };
+
+    expect(a.foo).toBeDefined();
+    expect(a.bar).not.toBeDefined();
+  });
+
+  it("The `toBeUndefined` matcher compares against `undefined`", function() {
+    var a = {
+      foo: "foo"
+    };
+
+    expect(a.foo).not.toBeUndefined();
+    expect(a.bar).toBeUndefined();
+  });
+
+  it("The 'toBeNull' matcher compares against null", function() {
+    var a = null;
+    var foo = "foo";
+
+    expect(null).toBeNull();
+    expect(a).toBeNull();
+    expect(foo).not.toBeNull();
+  });
+
+  it("The 'toBeTruthy' matcher is for boolean casting testing", function() {
+    var a, foo = "foo";
+
+    expect(foo).toBeTruthy();
+    expect(a).not.toBeTruthy();
+  });
+
+  it("The 'toBeFalsy' matcher is for boolean casting testing", function() {
+    var a, foo = "foo";
+
+    expect(a).toBeFalsy();
+    expect(foo).not.toBeFalsy();
+  });
+
+  it("The 'toContain' matcher is for finding an item in an Array", function() {
+    var a = ["foo", "bar", "baz"];
+
+    expect(a).toContain("bar");
+    expect(a).not.toContain("quux");
+  });
+
+  it("The 'toBeLessThan' matcher is for mathematical comparisons", function() {
+    var pi = 3.1415926,
+      e = 2.78;
+
+    expect(e).toBeLessThan(pi);
+    expect(pi).not.toBeLessThan(e);
+  });
+
+  it("The 'toBeGreaterThan' matcher is for mathematical comparisons", function() {
+    var pi = 3.1415926,
+      e = 2.78;
+
+    expect(pi).toBeGreaterThan(e);
+    expect(e).not.toBeGreaterThan(pi);
+  });
+
+  it("The 'toBeCloseTo' matcher is for precision math comparison", function() {
+    var pi = 3.1415926,
+      e = 2.78;
+
+    expect(pi).not.toBeCloseTo(e, 2);
+    expect(pi).toBeCloseTo(e, 0);
+  });
+
+  it("The 'toThrow' matcher is for testing if a function throws an exception", function() {
+    var foo = function() {
+      return 1 + 2;
+    };
+    var bar = function() {
+      return a + 1;
+    };
+
+    expect(foo).not.toThrow();
+    expect(bar).toThrow();
+  });
+
+  it("The 'toThrowError' matcher is for testing a specific thrown exception", function() {
+    var foo = function() {
+      throw new TypeError("foo bar baz");
+    };
+
+    expect(foo).toThrowError("foo bar baz");
+    expect(foo).toThrowError(/bar/);
+    expect(foo).toThrowError(TypeError);
+    expect(foo).toThrowError(TypeError, "foo bar baz");
+  });
+});
+
+// Manually failing a spec with fail
+describe("A spec using the fail function", function() {
+  var foo = function(x, callBack) {
+    if (x) {
+      callBack();
+    }
+  };
+
+  it("should not call the callBack", function() {
+    foo(false, function() {
+      fail("Callback has been called");
+    });
+  });
+});
+
+// Grouping Related Specs with describe
+describe("A spec", function() {
+  it("is just a function, so it can contain any code", function() {
+    var foo = 0;
+    foo += 1;
+
+    expect(foo).toEqual(1);
+  });
+
+  it("can have more than one expectation", function() {
+    var foo = 0;
+    foo += 1;
+
+    expect(foo).toEqual(1);
+    expect(true).toEqual(true);
+  });
+});
+
+// Setup and Teardown
+describe("A spec using beforeEach and afterEach", function() {
+  var foo = 0;
+
+  beforeEach(function() {
+    foo += 1;
+  });
+
+  afterEach(function() {
+    foo = 0;
+  });
+
+  it("is just a function, so it can contain any code", function() {
+    expect(foo).toEqual(1);
+  });
+
+  it("can have more than one expectation", function() {
+    expect(foo).toEqual(1);
+    expect(true).toEqual(true);
+  });
+});
+describe("A spec using beforeAll and afterAll", function() {
+  var foo;
+
+  beforeAll(function() {
+    foo = 1;
+  });
+
+  afterAll(function() {
+    foo = 0;
+  });
+
+  it("sets the initial value of foo before specs run", function() {
+    expect(foo).toEqual(1);
+    foo += 1;
+  });
+
+  it("does not reset foo between specs", function() {
+    expect(foo).toEqual(2);
+  });
+});
+
+
+// Nesting describe blocks
+describe("A spec", function() {
+  var foo;
+
+  beforeEach(function() {
+    foo = 0;
+    foo += 1;
+  });
+
+  afterEach(function() {
+    foo = 0;
+  });
+
+  it("is just a function, so it can contain any code", function() {
+    expect(foo).toEqual(1);
+  });
+
+  it("can have more than one expectation", function() {
+    expect(foo).toEqual(1);
+    expect(true).toEqual(true);
+  });
+
+  describe("nested inside a second describe", function() {
+    var bar;
+
+    beforeEach(function() {
+      bar = 1;
+    });
+
+    it("can reference both scopes as needed", function() {
+      expect(foo).toEqual(bar);
+    });
+  });
+});
+
+// Disabling suites
+xdescribe("A spec", function() {
+  var foo;
+
+  beforeEach(function() {
+    foo = 0;
+    foo += 1;
+  });
+
+  it("is just a function, so it can contain any code", function() {
+    expect(foo).toEqual(1);
+  });
+});
+
+//Pending Specs
+describe("Pending specs", function() {
+
+  xit("can be declared 'xit'", function() {
+    expect(true).toBe(false);
+  });
+
+  it("can be declared with 'it' but without a function");
+
+  it("can be declared by calling 'pending' in the spec body", function() {
+    expect(true).toBe(false);
+    pending('this is why it is pending');
+  });
+
+});]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;james@sndeveloper.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-06-03 04:59:31&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;9e50bd590f37120094f3c09ce1050e8f&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;snd_Spoke_spec&lt;/sys_name&gt;&lt;sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="SND Spoke"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_9e50bd590f37120094f3c09ce1050e8f&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@sndeveloper.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-06-03 04:59:31&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+<remote_update_set display_value="SND Spoke - 1.2">8bb201340f41aa0094f3c09ce1050e05</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@sndeveloper.com</sys_created_by>
+<sys_created_on>2016-08-02 15:41:20</sys_created_on>
+<sys_id>cfb201340f41aa0094f3c09ce1050e05</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@sndeveloper.com</sys_updated_by>
+<sys_updated_on>2016-08-02 15:41:20</sys_updated_on>
+<table/>
+<target_name>snd_Spoke_spec</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>

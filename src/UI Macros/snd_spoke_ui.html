@@ -30,6 +30,20 @@ ${DOCTYPE}
         width: 75%;
         /*padding-top: 8px; FOR BUTTONS */
       }
+      .panel-heading .btn-open {
+        padding: 0px 4px;
+      }
+      #result_body .panel-heading {
+        padding: 4px 15px;
+      }
+      #result_body .panel-heading .panel-title {
+        font-size: 14px;
+        font-weight: 600;
+        padding-right: 4px;
+      }
+      #result_body .panel-heading .time {
+        margin-top: 7px;
+      }
     </style>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"
@@ -39,7 +53,7 @@ ${DOCTYPE}
   </head>
   <body>
 
-    <nav id="header" class="navbar navbar-inverse">
+    <nav id="header" class="navbar navbar-static-top navbar-inverse">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -71,37 +85,38 @@ ${DOCTYPE}
         <div class="col-xs-12">
           <div class="panel panel-default">
             <div class="panel-body">
-              <h3>Spoke Test Runner</h3>
+              <h3>Spoke Test Runner<br /><small>Behavioural testing in ServiceNow</small></h3>
               <hr />
-              <p>A lightweight Jasmine based framework for behavioural testing in ServiceNow.</p>
-
               <table class="table table-striped table-bordered">
                 <tr>
-                  <th>Application:</th>
+                  <th class="col-xs-4 col-sm-3">Application:</th>
                   <td>${APP_NAME}</td>
                 </tr>
                 <tr>
-                  <th>Description:</th>
-                  <td>${APP_DESC}</td>
+                  <th class="col-xs-4 col-sm-3">Version:</th>
+                  <td>${APP_VERSION}</td>
                 </tr>
                 <tr>
-                  <th>Version:</th>
-                  <td>${APP_VERSION}</td>
+                  <th class="col-xs-4 col-sm-3">Description:</th>
+                  <td>${APP_DESC}</td>
                 </tr>
               </table>
             </div>
-            <div class="panel-footer text-right">
-              <button id="get_btn" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Show specs</button>
-              <button id="run_btn" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>
-                <span id="run_btn_text">Execute All</span></button>
+            <div class="panel-footer">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5 class="" id="result_title" style="display: none"></h5>
+                </div>
+                <div class="col-sm-6">
+                  <div class="text-right">
+                    <button id="get_btn" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Show specs</button>
+                    <button id="run_btn" class="btn btn-success"><span class="glyphicon glyphicon-play"></span>
+                    <span id="run_btn_text">Execute All</span></button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="alert" id="result_title" style="display: none"></div>
         </div>
       </div>
 
@@ -121,14 +136,14 @@ ${DOCTYPE}
 
       var url_params={};window.location.search.replace(/[?${AMP}]+([^=${AMP}]+)=([^${AMP}]*)/gi,function(str,key,value){url_params[key] = value;});
 
+      function togglePanel(forTitle) {
+        $(forTitle).parent().next('.panel-body').toggle();
+      }
+
       var spoke_client = (function () {
 
         var $result_title = $('#result_title');
         var $result_body = $('#result_body');
-
-        $result_body.on('click', 'div.panel-heading', function () {
-          $(this).next('.panel-body').toggle();
-        });
 
         function renderNode(node) {
           var p, li, ul, i, fails, class_name, icon;
@@ -160,15 +175,17 @@ ${DOCTYPE}
           icon = '<span class="small glyphicon glyphicon-' + icon + '"></span> ';
 
           li = $('<li></li>');
-          li.append('<p class="' + class_name + '">' + icon + node.description + '</p>');
+          li.append('<p class="' + class_name + '">' + icon + node.description + ' <small class="pull-right">(' + node.execution_time + 'ms)</small></p>');
 
-          if (node.hasOwnProperty('failed_expectations')) {
-            if (node.failed_expectations.length) {
-              fails = $('<table class="table table-striped table-bordered small"></table>');
-              for (i = 0; node.failed_expectations.length > i; i++) {
-                fails.append('<tr class="warning"><td>' + node.failed_expectations[i] + '</td></tr>');
+          if (node.status != 'pending') {
+            if (node.hasOwnProperty('failed_expectations')) {
+              if (node.failed_expectations.length) {
+                fails = $('<table class="table table-striped table-bordered small"></table>');
+                for (i = 0; node.failed_expectations.length > i; i++) {
+                  fails.append('<tr class="warning"><td>' + node.failed_expectations[i] + '</td></tr>');
+                }
+                li.append(fails);
               }
-              li.append(fails);
             }
           }
 
@@ -189,30 +206,35 @@ ${DOCTYPE}
           var ul, i, j, suite,
               $panel_title,
               $panel_body,
-              details;
+              details,
+              api_name;
 
           $result_title.text('Testing ' + results.status + '. ' +
             results.total_specs + ' spec' + (results.total_specs == 1 ? '' : 's') +
             ', ' + results.failed_specs + ' failed.');
 
           if (results.failed_specs > 0) {
-            $result_title.removeClass('alert-success alert-warning').addClass('alert-danger');
+            $result_title.removeClass('text-success text-warning').addClass('text-danger');
           } else if (results.status == 'ignored') {
-            $result_title.removeClass('alert-success alert-danger').addClass('alert-warning');
+            $result_title.removeClass('text-success text-danger').addClass('text-warning');
           } else {
-            $result_title.removeClass('alert-warning alert-danger').addClass('alert-success');
+            $result_title.removeClass('text-warning text-danger').addClass('text-success');
           }
 
           if (!results.suites) return;
           for (i = 0; results.suites.length > i; i++) {
             suite = results.suites[i];
             details = results.details[i];
+            api_name = results.details[i].api_name;
 
             $panel =
-                $('<div class="panel" id="result_title"><div class="panel-heading interactive">' +
-                    '<h3 class="panel-title pull-left">' + suite.description + '</h3>' +
-                    '<a class="pull-right" href="/sys_script_include.do?sys_id=' + details.sys_id + '" onclick="$.Event(event).stopPropagation();" target="' + details.sys_id + '">' +
-                      '<span class="glyphicon glyphicon-edit"></span> Edit</a>' +
+                $('<div class="panel"><div class="panel-heading">' +
+                    '<a href="' + api.getExecuteLink(api_name) + '" onclick="spoke_client.executeTests(\'' + api_name + '\'); return false" title="Execute" class="btn btn-link btn-open">' +
+                      '<span class="glyphicon glyphicon-play"></span> <span class="sr-only">Execute</span></a>' +
+                    '<a href="/sys_script_include.do?sys_id=' + details.sys_id + '" onclick="$.Event(event).stopPropagation();" target="' + details.sys_id + '" title="Edit" class="btn btn-link btn-open">' +
+                      '<span class="glyphicon glyphicon-edit"></span> <span class="sr-only">Edit</span></a>' +
+                    '<span class="btn btn-link panel-title" onclick="togglePanel(this);">' + suite.description + '</span>' +
+                    '<small class="pull-right">(' + suite.execution_time + 'ms)</small>' +
                     '<div class="clearfix"></div>' +
                   '</div></div>');
             $panel_body = $('<div class="panel-body"></div>');
@@ -246,9 +268,9 @@ ${DOCTYPE}
 
           $result_title.text('Found ' + specs.length + ' spec' + (specs.length == 1 ? '' : 's'));
           if (specs.length) {
-            $result_title.removeClass('alert-warning alert-danger').addClass('alert-success');
+            $result_title.removeClass('text-warning text-danger').addClass('text-success');
           } else {
-            $result_title.removeClass('alert-success alert-danger').addClass('alert-warning');
+            $result_title.removeClass('text-success text-danger').addClass('text-warning');
             return;
           }
 
@@ -311,12 +333,14 @@ ${DOCTYPE}
         };
 
         api.run = function (url, callback) {
+
+          $result_title.removeClass().addClass('text-primary').text('Running...');
+
           url += '${AMP}sysparm_ck=' + SYSPARM_CK;
 
           $('#run_btn').prop('disabled', true)
           $('#get_btn').prop('disabled', true);
 
-          $result_title.hide();
           $result_body.empty();
 
 

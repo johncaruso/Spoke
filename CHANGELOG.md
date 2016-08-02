@@ -1,5 +1,11 @@
 # [Spoke](https://github.com/sn-developer/Spoke)
-A lightweight Jasmine based framework for behavioural testing in ServiceNow.
+Behaviour driven development in ServiceNow
+
+### Version 1.2
+* Fixed stackOverFlow error with large test suites.
+* Fixed error handling.
+* UI improvements.
+* Added execution timers.
 
 ### Version 1.1
 * Added support for before/after functions.
