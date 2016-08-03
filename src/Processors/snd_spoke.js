@@ -141,7 +141,7 @@
         result;
     gr = new GlideRecord('sys_script_include');
     gr.addQuery('api_name', 'STARTSWITH', USER_SCOPE + '.');
-    gr.addQuery('api_name', 'ENDSWITH', '_spec');
+    gr.addQuery('api_name', 'ENDSWITH', gs.getProperty('snd.spoke.spec.filter', '_spec'));
     gr.addQuery('active', '=', true);
     gr.orderBy('name');
     gr.query();

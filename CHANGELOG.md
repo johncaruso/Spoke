@@ -1,5 +1,11 @@
 # [Spoke](https://github.com/sn-developer/Spoke)
-Behaviour driven development in ServiceNow
+Behaviour driven development in ServiceNow. Find more at www.sndeveloper.com.
+
+### Version 1.3
+* UI improvements.
+* Added property to choose the filter for specs.
+* Fixed pretty print object handling.
+* Added icon.
 
 ### Version 1.2
 * Fixed stackOverFlow error with large test suites.

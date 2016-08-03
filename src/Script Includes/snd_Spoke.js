@@ -1263,7 +1263,7 @@ snd_Spoke.Expectation.addCoreMatchers({
 // Pretty printer
 //==============================================================================
 
-snd_Spoke.PrettyPrinter = function () {};
+/*snd_Spoke.PrettyPrinter = function () {};
 snd_Spoke.PrettyPrinter.prototype = {
   type: 'snd_Spoke.PrettyPrinter',
   format: function (value) {
@@ -1279,14 +1279,14 @@ snd_Spoke.PrettyPrinter.prototype = {
         return '<$global>';
       } else if (value instanceof Date) {
         return 'Date(' + value + ')';
-      } else if (value.toString) {
-        return '' + value;
       } else if (type == '[object Function]') {
         return 'Function';
       } else if (type == '[object String]' || type == '[object Number]') {
         return '' + value;
       } else if (type == '[object Array]') {
         return 'Array';
+      } else if (value.toString) {
+        return '"' + value + '"';
       } else {
         return type;
       }
@@ -1294,11 +1294,117 @@ snd_Spoke.PrettyPrinter.prototype = {
       return '<$error: ' + e + '>';
     }
   }
+};*/
+snd_Spoke.PrettyPrinter = function () {
+  this.is_browser = typeof window !== 'undefined';
+  this.global = this.is_browser ? window : global;
+  this.scope =  (function () { return this; })();
+  this.not_str_regex = /^\[[a-zA-Z0-9_. ]+\]$|^[a-zA-Z0-9.]+@[a-z0-9]+$/;
 };
-snd_Spoke.prettyPrint = function (value) {
-  var printer = new snd_Spoke.PrettyPrinter();
-  return printer.format(value);
+snd_Spoke.PrettyPrinter.prototype.toString = function () {
+  return '[object ' + this.type + ']';
 };
+snd_Spoke.PrettyPrinter.prototype = {
+
+  type: 'snd_Spoke.PrettyPrinter',
+
+  getType: function (obj) {
+    return Object.prototype.toString.call(obj).slice(8, -1);
+  },
+
+  'String': function (obj) {
+    obj = obj + '';
+
+    // handle object types and memory references
+    if (obj.match(this.not_str_regex)) {
+      return obj;
+    }
+
+    return '"' + obj + '"';
+  },
+
+  'Boolean': function (obj) {
+    return obj ? 'true' : 'false';
+  },
+
+  'Function': function (obj) {
+    return '' + obj;
+  },
+
+  'Number': function (obj) {
+    return '' + obj;
+  },
+
+  'Array': function (obj) {
+    var str = [];
+    for (var i = 0; i < obj.length; i++) {
+      str.push(this.format(obj[i]));
+    }
+    return '[' + str.join(', ') + ']';
+  },
+
+  'SNRegExp': function (obj) {
+    return obj.toString();
+  },
+
+  'GlideRecord': function (obj) {
+    var type = this.getType(obj);
+    var str = type + '(' + obj.getTableName();
+    if (!obj.sys_id.nil()) {
+      str += ':' + obj.sys_id;
+      str += ':' + obj.getDisplayValue();
+    }
+    str += ')';
+    return str;
+  },
+
+  format: function (obj) {
+    var type = this.getType(obj);
+
+    if (obj === null || obj === void 0) return '' + obj;
+
+    if (this.is_browser) {
+      return type in this ? this[type](obj) : '' + obj;
+    }
+
+    if (obj === this.global || type == 'global') {
+      return '[global scope]';
+    }
+
+    if (obj === this.scope) {
+      return '[' + type + ' scope]';
+    }
+
+    // handle native JavaScript objects which we know have a toString
+    if (obj instanceof Function ||
+        obj instanceof Object ||
+        obj instanceof Array ||
+        type == 'Number' ||
+        type == 'Boolean' ||
+        type == 'String' ||
+        obj instanceof RegExp) {
+      return type in this ? this[type](obj) : this.String(obj);
+    }
+
+    // Java objects can have the same type but break when calling toString
+    // We would only get here if their instanceof did not match.
+    if (type === 'Function' || type === 'Object') {
+      return '';
+    }
+
+    // catch all
+    try {
+      return this.String(obj);
+    } catch (e) {
+      return '[object ' + type + ']';
+    }
+  }
+
+};
+snd_Spoke.prettyPrint = (function () {
+  var pp = new snd_Spoke.PrettyPrinter();
+  return function (value) { return pp.format(value); };
+})();
 
 //==============================================================================
 // Matcher utility
@@ -2118,7 +2224,7 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
                   'api_name: "' + glide_record.getValue('api_name') + '", ' +
                   'sys_updated_on: "' + glide_record.getValue('sys_updated_on') + '", ' +
                   'sys_id: "' + glide_record.getValue('sys_id') + '" ' +
-                '});';
+                '});\n';
       script += 'global.snd_Spoke.EXECUTE_LINE = ' + script.split('\n').length + ' + 1;\n';
       script += 'describe("' + glide_record.getDisplayValue() + '", function () { \n';
       script += glide_record.getValue(script_field) + '\n\n';

@@ -1,4 +1,4 @@
-# Spoke
+# ![Spoke logo](readme-assets/spoke-icon-48.png) Spoke
 
 [**Get the Update Set.**](https://share.servicenow.com/app.do#/search-result?search_query=sndeveloper&startRow=NaN&sort_parameter=title)
 
