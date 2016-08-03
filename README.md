@@ -2,17 +2,30 @@
 
 [**Get the Update Set.**](https://share.servicenow.com/app.do#/search-result?search_query=sndeveloper&startRow=NaN&sort_parameter=title)
 
-*Spoke* is an application for ServiceNow that lets you run JavaScript specifications for behavior-driven development (BDD).
+*Spoke* is an application for ServiceNow that lets you run JavaScript specifications
+for behavior-driven development (BDD).
 
 ### Friendly Interface
-*Spoke* has an interactive, user friendly interface which means running tests in ServiceNow is really easy. Literally, anyone can use it. Validate releases simply by going into Spoke and clicking one button. You really can forget about using fix scripts for testing!
+*Spoke* has an interactive, user friendly interface which means running tests in
+ServiceNow is really easy. Literally, anyone can use it. Validate releases simply
+by going into Spoke and clicking one button. You really can forget about using fix
+scripts for testing!
 
-![ScreenShot](readme-assets/spoke-ui-1.png)
+![ScreenShot](readme-assets/spoke-specs.png)
 
 ### Living Documentation
-When you start writing BDD tests, you are automatically building an API documentation for your code. As long as you keep your tests up to date, you've got living documentation and proof that your code does what it's supposed to do all in one. What's not to like?
+When you start writing BDD tests, you are automatically building an API documentation
+for your code. As long as you keep your tests up to date, you've got living documentation
+and proof that your code does what it's supposed to do all in one. What's not to like?
 
-![ScreenShot](readme-assets/spoke-ui-2.png)
+![ScreenShot](readme-assets/spoke-test.png)
+
+### Clear Errors
+If you're testing, you want errors to be abundantly clear. Not only does Spoke capture
+the test failures, it will also capture errors with your script (unless you somehow
+manage to kill the thread).
+
+![ScreenShot](readme-assets/spoke-fail.png)
 
 ### *Jasmine* Based
 If you've ever used the popular *Jasmine* framework, then you're ready to go. *Spoke* uses a version of *Jasmine* that has been rebuilt from the ground up to work natively in ServiceNow.
