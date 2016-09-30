@@ -3,7 +3,7 @@
   Contribute at github.com/sn-developer/Spoke
   james@sndeveloper.com
 */
-function snd_Spoke() {
+var snd_Spoke = function () {
 
   this.totalSpecsDefined = 0;
 
@@ -34,11 +34,11 @@ function snd_Spoke() {
   this.currentDeclarationSuite = this.topSuite;
 
   this.reporter = new snd_Spoke.Reporter();
-  this.exceptionFormatter = new snd_Spoke.ExceptionFormatter();
+  this.exceptionFormatter = snd_Spoke.exceptionFormatter;
 
   this.currentSpecCallbackDepth = 0;
   this.maximumSpecCallbackDepth = 20;
-}
+};
 
 snd_Spoke.DEFAULT_TIMEOUT_INTERVAL = 5000;
 
@@ -214,7 +214,7 @@ snd_Spoke.prototype = {
       declaration_error = e;
     }
 
-    if (declaration_error) {
+    if (declaration_error !== null) {
       this.it('encountered a declaration exception', function () {
         throw declaration_error;
       });
@@ -430,8 +430,8 @@ snd_Spoke.prototype = {
   },
 
   expectationResultFactory: function (attrs) {
-    attrs.messageFormatter = this.exceptionFormatter.message;
-    attrs.stackFormatter = this.exceptionFormatter.stack;
+    attrs.messageFormatter = this.exceptionFormatter.formatMessage;
+    attrs.stackFormatter = this.exceptionFormatter.formatStack;
 
     return snd_Spoke.buildExpectationResult(attrs);
   },
@@ -844,7 +844,7 @@ snd_Spoke.Spec.extractCustomPendingMessage = function (e) {
 };
 
 snd_Spoke.Spec.isPendingSpecException = function (e) {
-  return !!(e && e.toString && e.toString().indexOf(snd_Spoke.Spec.pendingSpecExceptionMessage) !== -1);
+  return !!(e && e.toString !== void(0) && e.toString().indexOf(snd_Spoke.Spec.pendingSpecExceptionMessage) !== -1);
 };
 
 //==============================================================================
@@ -863,6 +863,7 @@ snd_Spoke.Expectation = function (options) {
     this[matcherName] = Expectation.prototype.wrapCompare(matcherName, customMatchers[matcherName]);
   }
 };
+snd_Spoke.Expectation.prototype.type = 'snd_Spoke.Expectation';
 snd_Spoke.Expectation.prototype.wrapCompare = function (name, matcherFactory) {
   return function() {
     var args = Array.prototype.slice.call(arguments, 0),
@@ -937,7 +938,7 @@ snd_Spoke.Expectation.addCoreMatchers = function (matchers) {
 snd_Spoke.Expectation.addCoreMatchers({
   toBe: function () {
     return {
-      compare: function(actual, expected) {
+      compare: function (actual, expected) {
         return {
           pass: actual === expected
         };
@@ -946,7 +947,7 @@ snd_Spoke.Expectation.addCoreMatchers({
   },
   toBeCloseTo: function () {
     return {
-      compare: function(actual, expected, precision) {
+      compare: function (actual, expected, precision) {
         if (precision !== 0) {
           precision = precision || 2;
         }
@@ -956,45 +957,54 @@ snd_Spoke.Expectation.addCoreMatchers({
       }
     };
   },
-  toBeDefined: function() {
+  toBeDefined: function () {
     return {
-      compare: function(actual) {
+      compare: function (actual) {
         return {
           pass: (void 0 !== actual)
         };
       }
     };
   },
-  toBeFalsy: function() {
+  toBeFalsy: function () {
     return {
-      compare: function(actual) {
+      compare: function (actual) {
         return {
           pass: !!!actual
         };
       }
     };
   },
-  toBeGreaterThan: function() {
+  toBeGreaterThan: function () {
     return {
-      compare: function(actual, expected) {
+      compare: function (actual, expected) {
         return {
           pass: actual > expected
         };
       }
     };
   },
-  toBeLessThan: function() {
+  toBeLessThan: function () {
     return {
-      compare: function(actual, expected) {
+      compare: function (actual, expected) {
         return {
           pass: actual < expected
         };
       }
     };
   },
-  toBeNaN: function() {
+  toBeLike: function () {
     return {
-      compare: function(actual) {
+      compare: function (actual, expected) {
+        return {
+          pass: actual == expected
+        };
+      }
+    };
+  },
+  toBeNaN: function () {
+    return {
+      compare: function (actual) {
         var result = {
           pass: (actual !== actual)
         };
@@ -1009,7 +1019,7 @@ snd_Spoke.Expectation.addCoreMatchers({
       }
     };
   },
-  toBeNull: function() {
+  toBeNull: function () {
     return {
       compare: function(actual) {
         return {
@@ -1018,7 +1028,7 @@ snd_Spoke.Expectation.addCoreMatchers({
       }
     };
   },
-  toBeTruthy: function() {
+  toBeTruthy: function () {
     return {
       compare: function(actual) {
         return {
@@ -1027,7 +1037,7 @@ snd_Spoke.Expectation.addCoreMatchers({
       }
     };
   },
-  toBeUndefined: function() {
+  toBeUndefined: function () {
     return {
       compare: function(actual) {
         return {
@@ -1058,7 +1068,7 @@ snd_Spoke.Expectation.addCoreMatchers({
       }
     };
   },
-  toMatch: function() {
+  toMatch: function () {
     return {
       compare: function(actual, expected) {
         if (!snd_Spoke.isString_(expected) && !snd_Spoke.isA_('RegExp', expected) && !snd_Spoke.isA_('SNRegExp', expected)) {
@@ -1583,7 +1593,7 @@ snd_Spoke.matchersUtil = (function() {
         isNot = args[1],
         actual = args[2],
         expected = args.slice(3),
-        englishyPredicate = matcherName.replace(/[A-Z]/, function(s) { return ' ' + s.toLowerCase(); });
+        englishyPredicate = matcherName.replace(/[A-Z]/g, function(s) { return ' ' + s.toLowerCase(); });
 
       var message = 'Expected ' +
         snd_Spoke.prettyPrint(actual) +
@@ -1685,35 +1695,70 @@ snd_Spoke.errors = (function () {
 })();
 
 //==============================================================================
-// ExceptionFormatter
+// exceptionFormatter
 //==============================================================================
 
-snd_Spoke.ExceptionFormatter = function () {
-  this.message = function(error) {
-    var message = '';
-    var line = error.line || error.lineNumber;
+snd_Spoke.exceptionFormatter = {};
+snd_Spoke.exceptionFormatter.formatMessage = function(error) {
+  var message = '';
 
-    if (error.name && error.message) {
-      message += error.name + ': ' + error.message;
-    } else {
-      message += error.toString() + ' thrown';
+  if (error.name && error.message) {
+    message += error.name + ': ' + error.message;
+  } else {
+    message += error + ' thrown';
+  }
+
+  message += snd_Spoke.exceptionFormatter.getSource(error);
+
+  return message;
+};
+
+snd_Spoke.exceptionFormatter.stack = function(error) {
+  return error ? error.stack : null;
+};
+
+snd_Spoke.exceptionFormatter.getSource = function (error) {
+  var result = '',
+      test_line,
+      found,
+      match,
+      line,
+      gr;
+
+  if (!error) { return ''; }
+
+  // handle ServiceNow error
+  if (error.sourceName) {
+    match = error.sourceName.toString().match(/([a-z_]+)\.([0-9a-f]{32})/);
+    if (match) {
+      gr = new GlideRecord(match[1]);
+      if (gr.isValid()) {
+        gr.addQuery('sys_id', '=', match[2]);
+        gr.setLimit(1);
+        gr.query();
+        if (gr.next()) {
+          found = true;
+          result = ' in ' + gr.getLabel() + ' ' + gr.getDisplayValue() + ' [' + match[1] + '.do?sys_id=' + match[2] + ']';
+        }
+      }
     }
+  }
 
-    if (error.fileName || error.sourceURL) {
-      message += ' in ' + (error.fileName || error.sourceURL);
-    }
+  // handle all other errors
+  if (!found && (error.sourceName || error.fileName || error.sourceURL)) {
+    result += ' in ' + (error.sourceName || error.fileName || error.sourceURL);
+  }
 
-    if (line) {
-      line = line - snd_Spoke.EXECUTE_LINE;
-      message += ' (line ' + line + ')';
-    }
+  // get the line number - adjusting for Spoke running a compiled script with EXECUTE_LINE
+  line = error.line || error.lineNumber;
+  if (line) {
+    test_line = found ? line : line - snd_Spoke.EXECUTE_LINE;
+    result += ' (line ' + test_line;
+    if (line != test_line) result += ' [' + line + ']';
+    result += ')';
+  }
 
-    return message;
-  };
-
-  this.stack = function(error) {
-    return error ? error.stack : null;
-  };
+  return result;
 };
 
 //==============================================================================
@@ -1751,6 +1796,8 @@ snd_Spoke.QueueRunner.prototype = {
       var queueableFn = queueableFns[iterativeIndex];
       if (queueableFn.fn.length > 0) {
         //this.attemptAsync(queueableFns, queueableFn, iterativeIndex + 1);
+
+        // we can't run async stuff in ServiceNow, but we do have to run all the children
         this.attemptSync(queueableFn);
         this.run(queueableFns, iterativeIndex + 1);
         return;
@@ -2010,12 +2057,19 @@ snd_Spoke.TreeProcessor.prototype = {
     if (node.children) {
       return {
         fn: function (done) {
+
           self.nodeStart(node);
 
           self.queueRunnerFactory({
             onComplete: function() {
               self.nodeComplete(node, node.getResult());
-              done();
+
+              // Normally, done should be called to kick off the next function.
+              // This is a run once scenario that in a multi-thread environment like a
+              // browser, you could call once an async call has been completed.
+              // As we don't have async, we don't care.
+              if (done) done();
+
             },
             queueableFns: self.wrapChildren(node, segmentNumber),
             userContext: node.sharedUserContext(),
@@ -2214,7 +2268,7 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
       fn;
 
   var script = 'try {\n' +
-      'var $ = new global.snd_Spoke();\n' +
+      'var $ = new snd_Spoke();\n' +
       '$.updateEnv(this);\n\n';
 
   if (glide_record.hasNext()) {
@@ -2225,9 +2279,11 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
                   'sys_updated_on: "' + glide_record.getValue('sys_updated_on') + '", ' +
                   'sys_id: "' + glide_record.getValue('sys_id') + '" ' +
                 '});\n';
-      script += 'global.snd_Spoke.EXECUTE_LINE = ' + script.split('\n').length + ' + 1;\n';
+      script += 'snd_Spoke.EXECUTE_LINE = ' + script.split('\n').length + ' + 1;\n';
       script += 'describe("' + glide_record.getDisplayValue() + '", function () { \n';
+      script += 'try {';
       script += glide_record.getValue(script_field) + '\n\n';
+      script += '} catch (e) { fail(snd_Spoke.exceptionFormatter.formatMessage(e)); }';
       script += '});\n';
     }
     script += '$.execute();';

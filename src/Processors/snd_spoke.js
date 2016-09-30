@@ -121,17 +121,15 @@
 
     reporter = snd_Spoke.executeFromScripts(gr, 'script');
 
-    if (!reporter) {
-      throw 'Execution failed. Could be a scope issue?';
+    if (reporter) {
+      data = {};
+      data.details = reporter.details;
+      data.failed_specs = reporter.failed_specs;
+      data.suites = reporter.tree.children;
+      data.total_specs = reporter.total_specs;
+      data.status = reporter.status;
+      if (reporter.error) data.error = reporter.error;
     }
-
-    data = {};
-    data.details = reporter.details;
-    data.failed_specs = reporter.failed_specs;
-    data.suites = reporter.tree.children;
-    data.total_specs = reporter.total_specs;
-    data.status = reporter.status;
-    if (reporter.error) data.error = reporter.error;
 
     return data;
   }
@@ -172,8 +170,7 @@
         name = params.action,
         start_time,
         errors,
-        data,
-        exf = new snd_Spoke.ExceptionFormatter();
+        data;
 
     start_time = new Date().getTime();
 
@@ -183,6 +180,10 @@
       switch (name) {
         case 'executeTests':
           result.results = executeTests(params);
+          if (!result.results) {
+            result.$success = false;
+            result.$error = 'Execution failed without error. Please check the logs and/or use Xplore to debug your scripts.';
+          }
           break;
         case 'getAvailableSpecs':
           result.specs = getAvailableSpecs(params);
@@ -194,14 +195,15 @@
 
       errors = snd_console.get ? snd_console.get({type: 'error'}) : [];
       if (errors.length) {
-        result.$success = false;
+        // we still succeeded in running the test - there's just an error from console
+        // result.$success = false;
         result.$error = errors.pop();
       }
 
     } catch (e) {
       result.$success = false;
-      result.$error = exf.message(e);
-      result.$stack = exf.stack(e);
+      result.$error = snd_Spoke.exceptionFormatter.formatMessage(e);
+      result.$stack = snd_Spoke.exceptionFormatter.formatStack(e);
     }
 
     result.$time = (new Date().getTime()) - start_time;
@@ -250,7 +252,7 @@
     **/
     function replaceVars(str, vars) {
       if (typeof vars == 'object') {
-        str = str.replace(/\$\{\s*(\w+)\s*\}/g, function (m, word) {
+        str = str.replace(/\$\{\s*(?:\w+:)?(\w+)\s*\}/g, function (m, word) {
           return vars.hasOwnProperty(word) ? vars[word] || '' : m;
         });
       }
