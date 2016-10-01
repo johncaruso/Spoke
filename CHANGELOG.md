@@ -1,6 +1,9 @@
 # [Spoke](https://github.com/sn-developer/Spoke)
 Behaviour driven development in ServiceNow. Find more at www.sndeveloper.com.
 
+### Version 1.5
+* Fix icon source.
+
 ### Version 1.4
 * Script execution and result improvements, including Helsinki compatibility.
 * Compatibility with scoped apps.
