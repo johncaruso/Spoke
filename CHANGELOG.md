@@ -1,6 +1,9 @@
 # [Spoke](https://github.com/sn-developer/Spoke)
 Behaviour driven development in ServiceNow. Find more at www.sndeveloper.com.
 
+### Version 1.7
+* Amend update set name for clarity.
+
 ### Version 1.6
 * Fixed property lookup in processor.
 * Added application modules to view script specifications and properties.

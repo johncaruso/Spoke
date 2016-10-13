@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<unload unload_date="2016-10-13 08:18:13">
+<unload unload_date="2016-10-13 08:34:24">
 <sys_remote_update_set action="INSERT_OR_UPDATE">
 <application display_value="Global">global</application>
 <application_name>Global</application_name>
@@ -10,22 +10,25 @@
 <deleted/>
 <description>Behaviour driven development in ServiceNow. Find more at www.sndeveloper.com.
 
+### Version 1.7
+* Amend update set name for clarity; actually just version 1.6.
+
 ### Version 1.6
 * Fixed property lookup in processor.
 * Added application modules to view script specifications and properties.</description>
 <inserted/>
-<name>SND Spoke</name>
+<name>SND Spoke 1.7</name>
 <origin_sys_id/>
 <release_date/>
-<remote_sys_id>00bfc6f70f922e00c55a09ece1050e12</remote_sys_id>
+<remote_sys_id>b443da3b0f922e00c55a09ece1050e56</remote_sys_id>
 <state>loaded</state>
 <summary/>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>c6cf8ef70f922e00c55a09ece1050ea3</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>0b731e3b0f922e00c55a09ece1050e07</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <update_set display_value=""/>
 <update_source display_value=""/>
 <updated/>
@@ -35,16 +38,513 @@
 <application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
 <category>customer</category>
 <comments/>
-<name>sys_properties_category_aafd06f70f922e00c55a09ece1050ea9</name>
-<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties_category"><sys_properties_category action="INSERT_OR_UPDATE"><name>SND Spoke</name><sys_class_name>sys_properties_category</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-10-13 08:10:29</sys_created_on><sys_customer_update>true</sys_customer_update><sys_id>aafd06f70f922e00c55a09ece1050ea9</sys_id><sys_mod_count>0</sys_mod_count><sys_name>SND Spoke</sys_name><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_properties_category_aafd06f70f922e00c55a09ece1050ea9</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-10-13 08:10:29</sys_updated_on><title/></sys_properties_category><sys_translated_text action="delete_multiple" query="documentkey=aafd06f70f922e00c55a09ece1050ea9"/></record_update>]]></payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
+<name>sys_properties_9d49e6780f81aa0094f3c09ce1050e7f</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties"><sys_properties action="INSERT_OR_UPDATE"><choices/><description>&lt;b&gt;Spoke Specification Filter&lt;/b&gt;&lt;br&gt;&#13;
+- Treat script includes that end with this string as Spoke specification scripts</description><ignore_cache>false</ignore_cache><is_private>false</is_private><name>snd.spoke.spec.filter</name><read_roles/><suffix/><sys_class_name>sys_properties</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-08-02 23:14:22</sys_created_on><sys_customer_update>true</sys_customer_update><sys_id>9d49e6780f81aa0094f3c09ce1050e7f</sys_id><sys_mod_count>2</sys_mod_count><sys_name>snd.spoke.spec.filter</sys_name><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_properties_9d49e6780f81aa0094f3c09ce1050e7f</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-08-02 23:32:26</sys_updated_on><type>string</type><value>_spec</value><write_roles/></sys_properties><sys_translated_text action="delete_multiple" query="documentkey=9d49e6780f81aa0094f3c09ce1050e7f"/></record_update>]]></payload>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>02cf8ef70f922e00c55a09ece1050ea4</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>03731e3b0f922e00c55a09ece1050e08</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
+<table/>
+<target_name>snd.spoke.spec.filter</target_name>
+<type>System Property</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_f21af42f0f822a00c55a09ece1050e29</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.snd_Spoke_generateTest&lt;/api_name&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;description&gt;Generate a script template to test each function of a script.&lt;/description&gt;&lt;name&gt;snd_Spoke_generateTest&lt;/name&gt;&lt;script&gt;&lt;![CDATA[/**
+ * Generate a script template to test each function of a script.
+ *
+ * @param  {String} api_name The ServiceNow api_name of the script include.
+ * @return {String}
+ */
+function snd_Spoke_generateTest(api_name) {
+
+  function getSource(api_name) {
+    var gr = new GlideRecord('sys_script_include');
+    gr.addQuery('api_name', '=', api_name);
+    gr.setLimit(1);
+    gr.query();
+    return gr.next() ? '' + gr.script : '';
+  }
+
+  function getMethods(obj) {
+    var methods = [];
+    for (var method in obj) {
+      if (obj.hasOwnProperty(method) &amp;&amp; typeof obj[method] == 'function') {
+        methods.push(method);
+      }
+    }
+    methods.sort();
+    return methods;
+  }
+
+  function describe(name, indent, content) {
+    content = content ? '  ' + content.replace(/\n/g, '\n  ' + indent) + '\n' : '  \n';
+    return indent + 'describe("' + name + '", function () {\n' +
+           indent + content +
+           indent + '});';
+  }
+
+  function toSentence(method, no_cap) {
+    var newSentence = true;
+    return method.replace(/[A-Z]{2,}|^[a-z]|[A-Z._]/g, function(v, i) {
+      if (v.length &gt; 1) return v;
+      if (newSentence) {
+        newSentence = false;
+        return (i === 0 &amp;&amp; no_cap) ? v : v.toUpperCase();
+      }
+      if (v === '.') {
+        newSentence = true;
+        return ' ';
+      }
+      return " " + (v === '_' ? '' : v.toLowerCase());
+    });
+  }
+
+  function getObject(api_name) {
+    var obj = (function () { return this;})(),
+        path = api_name.split('.'),
+        i;
+    for (i = 0; i &lt; path.length; i++) {
+      obj = obj[path[i]];
+    }
+    return obj;
+  }
+
+  function explain(source, method, is_proto) {
+    var end = 0,
+        search = (is_proto ? 'prototype.' : '') + method,
+        alt_end,
+        result,
+        match,
+        start;
+
+    do {
+      result = '';
+      start = source.indexOf(search, end);
+      if (start &lt; 0) break;
+      end = source.indexOf('{', start);
+      alt_end = source.indexOf(';', start);
+      if (alt_end &gt; 0 &amp;&amp; alt_end &lt; end) {
+        end = alt_end;
+      }
+      if (end &lt; 0) break;
+      result = source.substr(start, end - start).trim();
+    } while (result.indexOf('function') &lt; 0);
+
+    if (!result) {
+      match = source.match(new SNRegExp('(?!prototype\\s*=\\s*{.+?)' + method + ':\\s*[^)]+\\)'));
+      if (match) result = match[0];
+    }
+
+    return result || (search + ' function not defined in source code');
+  }
+
+  var source = getSource(api_name),
+      obj = getObject(api_name),
+      content = '\n',
+      comment,
+      methods,
+      is_private,
+      type,
+      i;
+
+  if (typeof obj === 'function') {
+    type = obj.prototype.type || api_name;
+    type += obj.prototype.type ? ' class' : ' object';
+    methods = getMethods(obj.prototype);
+    for (i = 0; i &lt; methods.length; i++) {
+      is_private = methods[i].indexOf('_') == 0 ? ' private' : '';
+      comment = '// test ' + explain(source, methods[i], true);
+      content += describe(toSentence(methods[i] + is_private + ' method', true), '', comment) + '\n\n';
+    }
+  } else {
+    type = api_name + ' object';
+  }
+
+  if (type.indexOf('x_') === 0) {
+    type = type.substr(type.indexOf('.'));
+  }
+
+  methods = getMethods(obj);
+  for (i = 0; i &lt; methods.length; i++) {
+    is_private = methods[i].indexOf('_') == 0 ? ' private' : '';
+    comment = '// test ' + explain(source, methods[i]);
+    content += describe(toSentence(methods[i] + is_private + ' function', true), '', comment) + '\n';
+    if (i + 1 &lt; methods.length) content += '\n'; // prevent double newline at end
+  }
+
+  if (type.match('^[a-z]')) type = ' ' + type;
+  return describe(toSentence('The' + type), '', content);
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;james@sndeveloper.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-09-29 21:10:29&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;f21af42f0f822a00c55a09ece1050e29&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;snd_Spoke_generateTest&lt;/sys_name&gt;&lt;sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="SND Spoke"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_f21af42f0f822a00c55a09ece1050e29&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@sndeveloper.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-09-29 22:47:46&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@sndeveloper.com</sys_created_by>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>07731e3b0f922e00c55a09ece1050e08</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@sndeveloper.com</sys_updated_by>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
+<table/>
+<target_name>snd_Spoke_generateTest</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
+<category>customer</category>
+<comments/>
+<name>sys_ui_script_3039b02f0f822a00c55a09ece1050ebd</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ui_script"&gt;&lt;sys_ui_script action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;SND Spoke Client&lt;/description&gt;&lt;global&gt;false&lt;/global&gt;&lt;name&gt;snd_spoke_ui&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var url_params={};window.location.search.replace(/[?&amp;]+([^=&amp;]+)=([^&amp;]*)/gi,function(str,key,value){url_params[key] = value;});
+
+function togglePanel(forTitle) {
+  $(forTitle).parent().next('.panel-body').toggle();
+}
+
+var spoke_client = (function () {
+
+  var $result_title = $('#result_title');
+  var $result_body = $('#result_body');
+
+  function renderNode(node) {
+    var p, li, ul, i, fails, class_name, icon, html;
+
+    if (node.type == 'spec') {
+      switch (node.status) {
+        case 'passed':
+          class_name = 'text-success';
+          icon = 'ok-circle';
+          break;
+        case 'disabled':
+        case 'pending':
+          class_name = 'text-warning';
+          icon = 'ban-circle';
+          if (node.pendingReason) {
+            node.description += ' PENDING WITH MESSAGE: ' + node.pendingReason;
+          }
+          break;
+        case 'failed':
+          class_name = 'text-danger';
+          icon = 'remove-circle';
+          break;
+      }
+    } else {
+      class_name = '';
+      icon = 'list';
+    }
+
+    icon = '&lt;span class="small glyphicon glyphicon-' + icon + '"&gt;&lt;/span&gt; ';
+
+    li = $('&lt;li&gt;&lt;/li&gt;');
+    li.append('&lt;p class="' + class_name + '"&gt;' + icon + escapeHtml(node.description) + ' &lt;small class="pull-right"&gt;(' + node.execution_time + 'ms)&lt;/small&gt;&lt;/p&gt;');
+
+    if (node.status != 'pending') {
+      if (node.hasOwnProperty('failed_expectations')) {
+        if (node.failed_expectations.length) {
+          fails = $('&lt;table class="table table-striped table-bordered small"&gt;&lt;/table&gt;');
+          for (i = 0; node.failed_expectations.length &gt; i; i++) {
+            html = escapeHtml(node.failed_expectations[i]);
+            fails.append('&lt;tr class="warning"&gt;&lt;td&gt;' + html + '&lt;/td&gt;&lt;/tr&gt;');
+          }
+          li.append(fails);
+        }
+      }
+    }
+
+    if (node.hasOwnProperty('children')) {
+      if (node.children.length) {
+        ul = $('&lt;ul&gt;&lt;/ul&gt;');
+        for (i = 0; node.children.length &gt; i; i++) {
+          ul.append(renderNode(node.children[i]));
+        }
+        li.append(ul);
+      }
+    }
+
+    return li;
+  }
+
+  function renderResults(results) {
+    var ul, i, j, suite,
+        $panel_title,
+        $panel_body,
+        details,
+        api_name,
+        errors = [];
+
+    $result_title.text('Testing ' + results.status + '. ' +
+      results.total_specs + ' spec' + (results.total_specs == 1 ? '' : 's') +
+      ', ' + results.failed_specs + ' failed expectations.');
+
+    if (results.failed_specs &gt; 0) {
+      $result_title.removeClass('text-success text-warning').addClass('text-danger');
+    } else if (results.status == 'ignored') {
+      $result_title.removeClass('text-success text-danger').addClass('text-warning');
+    } else {
+      $result_title.removeClass('text-warning text-danger').addClass('text-success');
+    }
+
+    if (!results.suites) return;
+    for (i = 0; results.suites.length &gt; i; i++) {
+      suite = results.suites[i];
+      details = results.details[i];
+      api_name = results.details[i].api_name;
+
+      if (suite.hasOwnProperty('failed_expectations')) {
+        errors = errors.concat(suite.failed_expectations);
+      }
+
+      $panel =
+          $('&lt;div class="panel"&gt;&lt;div class="panel-heading"&gt;' +
+              '&lt;a href="' + api.getExecuteLink(api_name) + '" onclick="spoke_client.executeTests(\'' + api_name + '\'); return false" title="Execute" class="btn btn-link btn-open"&gt;' +
+                '&lt;span class="glyphicon glyphicon-play"&gt;&lt;/span&gt; &lt;span class="sr-only"&gt;Execute&lt;/span&gt;&lt;/a&gt;' +
+              '&lt;a href="/sys_script_include.do?sys_id=' + details.sys_id + '" onclick="$.Event(event).stopPropagation();" target="' + details.sys_id + '" title="Edit" class="btn btn-link btn-open"&gt;' +
+                '&lt;span class="glyphicon glyphicon-edit"&gt;&lt;/span&gt; &lt;span class="sr-only"&gt;Edit&lt;/span&gt;&lt;/a&gt;' +
+              '&lt;span class="btn btn-link panel-title" onclick="togglePanel(this);"&gt;' + escapeHtml(suite.description) + '&lt;/span&gt;' +
+              '&lt;small class="pull-right"&gt;(' + suite.execution_time + 'ms)&lt;/small&gt;' +
+              '&lt;div class="clearfix"&gt;&lt;/div&gt;' +
+            '&lt;/div&gt;&lt;/div&gt;');
+      $panel_body = $('&lt;div class="panel-body"&gt;&lt;/div&gt;');
+
+      if (suite.hasOwnProperty('children')) {
+        ul = $('&lt;ul&gt;&lt;/ul&gt;');
+        for (j = 0; suite.children.length &gt; j; j++) {
+          ul.append(renderNode(suite.children[j]));
+        }
+        $panel_body.append(ul);
+      }
+
+      if ($panel_body.find('.text-danger').length) {
+        $panel.addClass('panel-danger');
+      } else {
+        $panel.addClass('panel-success');
+        if (results.suites.length &gt; 1) $panel_body.hide();
+      }
+
+      $panel.append($panel_body);
+      $result_body.append($panel);
+    }
+
+    if (errors.length) {
+      api.formatError({
+        $error: '&lt;ol&gt;&lt;li&gt;' + errors.join('&lt;/li&gt;&lt;li&gt;') + '&lt;/li&gt;&lt;/ol&gt;'
+      });
+    }
+
+  }
+
+  function renderSpecs(specs) {
+    var $list_group,
+        $panel,
+        spec,
+        i;
+
+    $result_title.text('Found ' + specs.length + ' spec' + (specs.length == 1 ? '' : 's'));
+    if (specs.length) {
+      $result_title.removeClass('text-warning text-danger').addClass('text-success');
+    } else {
+      $result_title.removeClass('text-success text-danger').addClass('text-warning');
+      return;
+    }
+
+    $list_group = $('&lt;div class="list-group"&gt;&lt;/div&gt;');
+    for (i = 0; specs.length &gt; i; i++) {
+      spec = specs[i];
+      $item =
+          '&lt;div class="list-group-item list-group-item-warning"&gt;' +
+            spec.name +
+            '&lt;div class="pull-right"&gt;' +
+              '&lt;a class="btn btn-link" href="/sys_script_include.do?sys_id=' + spec.sys_id + '" target="' + spec.sys_id + '"&gt;' +
+                '&lt;span class="glyphicon glyphicon-edit"&gt;&lt;/span&gt; Edit&lt;/a&gt;' +
+              '&lt;a class="btn btn-success" onclick="spoke_client.executeTests(\'' + spec.api_name + '\'); return false" href="' + api.getExecuteLink(spec.api_name) + '"&gt;' +
+                '&lt;span class="glyphicon glyphicon-play"&gt;&lt;/span&gt; Execute&lt;/a&gt;' +
+            '&lt;/div&gt;' +
+            '&lt;div class="small"&gt;Updated: ' + spec.updated + '&lt;/div&gt;' +
+          '&lt;/div&gt;';
+      $list_group.append($item);
+    }
+    $result_body.append($list_group);
+  }
+
+  var _charMap = {
+    '&gt;': '&amp;gt;',
+    '&lt;': '&amp;lt;',
+    '&amp;': '&amp;amp;',
+    "'": '&amp;#39;',
+    '"': '&amp;#34;'
+  };
+  function escapeHtml(text) {
+    return text.replace(/[&gt;&lt;&amp;'"]/g, function (c) {
+      return c in _charMap ? _charMap[c] : c;
+    });
+  }
+
+  var api = {};
+
+  api.current_script = url_params.script;
+
+  api.getAvailableSpecs = function () {
+    var url = ['?action=getAvailableSpecs'];
+    if ('sys_scope' in url_params) url.push('sys_scope=' + url_params.sys_scope);
+    api.current_script = '';
+    return api.run(url.join('&amp;'), function (data) {
+      if (data.$success) {
+        renderSpecs(data.specs);
+        $result_title.show();
+        $result_body.show();
+      }
+    });
+  };
+
+  api.formatError = function (data) {
+    if (data.$error) {
+      var message = data.$error.message ? data.$error.message : data.$error;
+      var html = '&lt;div class="alert alert-danger"&gt;' +
+          '&lt;h4&gt;&lt;span class="glyphicon glyphicon-remove-circle"&gt;&lt;/span&gt; Process Error&lt;/h4&gt;' +
+          '&lt;p&gt;&lt;samp&gt;' + message + '&lt;/samp&gt;&lt;/p&gt;';
+
+        if (data.$error.scope_stack) {
+          html += '&lt;p&gt;&lt;samp&gt;in ' + data.$error.scope_stack.join('&lt;br /&gt; in ') + '&lt;/samp&gt;&lt;/p&gt;';
+        }
+
+        html += '&lt;/div&gt;';
+        $result_body.prepend(html);
+        $result_body.show();
+    }
+  };
+
+  api.getExecuteLink = function (script) {
+    var url = ['?action=executeTests'];
+    if ('sys_scope' in url_params) url.push('sys_scope=' + url_params.sys_scope);
+    if (script) url.push('script=' + script);
+    return url.join('&amp;');
+  };
+
+  api.executeTests = function (script) {
+    if (arguments.length &gt; 0) api.current_script = script;
+    return api.run(api.getExecuteLink(api.current_script), function (data) {
+      if (data.$success) {
+        renderResults(data.results);
+        $result_title.show();
+        $result_body.show();
+      }
+    });
+  };
+
+  api.run = function (url, callback) {
+
+    $result_title.removeClass().addClass('text-primary').text('Running...');
+
+    url += '&amp;sysparm_ck=' + SYSPARM_CK;
+
+    $('#run_btn').prop('disabled', true);
+    $('#get_btn').prop('disabled', true);
+
+    $result_body.empty();
+
+
+    return $.ajax({
+      url: url,
+      dataType: 'json',
+      statusCode: {
+        401: function () {
+          window.location.reload();
+        }
+      }
+    }).then(function (data) {
+      api.formatError(data);
+      callback(data);
+    }, function (xhr) {
+      alert('Failed to execute AJAX request to run tests.');
+    }).then(function () {
+      $('#run_btn').prop('disabled', false);
+      $('#run_btn_text').text(spoke_client.current_script ? 'Execute' : 'Execute All');
+      $('#get_btn').prop('disabled', false);
+    });
+  };
+
+  return api;
+})();
+
+$('#run_btn').click(function () {
+  $('#run_btn_text').text('Running...');
+  spoke_client.executeTests();
+});
+
+$('#get_btn').click(function () {
+  spoke_client.getAvailableSpecs();
+});
+
+// if no script has been requested then show the available specs
+if (!url_params.script) {
+  spoke_client.getAvailableSpecs();
+}]]&gt;&lt;/script&gt;&lt;script_name/&gt;&lt;sys_class_name&gt;sys_ui_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;james@sndeveloper.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-09-29 21:06:23&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;3039b02f0f822a00c55a09ece1050ebd&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;snd_spoke_ui&lt;/sys_name&gt;&lt;sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="SND Spoke"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_script_3039b02f0f822a00c55a09ece1050ebd&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@sndeveloper.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-09-29 21:06:23&lt;/sys_updated_on&gt;&lt;use_scoped_format&gt;false&lt;/use_scoped_format&gt;&lt;/sys_ui_script&gt;&lt;/record_update&gt;</payload>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@sndeveloper.com</sys_created_by>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>0b731e3b0f922e00c55a09ece1050e08</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@sndeveloper.com</sys_updated_by>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
+<table/>
+<target_name>snd_spoke_ui</target_name>
+<type>UI Script</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
+<category>customer</category>
+<comments/>
+<name>sys_app_module_77c071d90f37120094f3c09ce1050ecc</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="SND Spoke">f88f2d990f37120094f3c09ce1050e7a</application><assessment/><content_page/><device_type/><filter/><hint>Spoke - the BDD test utility</hint><homepage/><image/><link_type>DIRECT</link_type><map_page/><mobile_title>Spoke</mobile_title><mobile_view_name>Mobile</mobile_view_name><name/><order/><override_menu_roles>false</override_menu_roles><query>/snd_spoke.do</query><report/><roles/><survey/><survey_overwrite>true</survey_overwrite><sys_class_name>sys_app_module</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-06-03 05:01:57</sys_created_on><sys_customer_update>true</sys_customer_update><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>77c071d90f37120094f3c09ce1050ecc</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Spoke</sys_name><sys_overrides/><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_app_module_77c071d90f37120094f3c09ce1050ecc</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-06-03 05:01:57</sys_updated_on><timeline_page/><title>Spoke</title><uncancelable>false</uncancelable><view_name/><window_name>_blank</window_name></sys_app_module></record_update>]]></payload>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@sndeveloper.com</sys_created_by>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>0f731e3b0f922e00c55a09ece1050e07</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@sndeveloper.com</sys_updated_by>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
+<table/>
+<target_name>Spoke</target_name>
+<type>Module</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
+<category>customer</category>
+<comments/>
+<name>sys_properties_category_aafd06f70f922e00c55a09ece1050ea9</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties_category"><sys_properties_category action="INSERT_OR_UPDATE"><name>SND Spoke</name><sys_class_name>sys_properties_category</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-10-13 08:10:29</sys_created_on><sys_customer_update>true</sys_customer_update><sys_id>aafd06f70f922e00c55a09ece1050ea9</sys_id><sys_mod_count>0</sys_mod_count><sys_name>SND Spoke</sys_name><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_properties_category_aafd06f70f922e00c55a09ece1050ea9</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-10-13 08:10:29</sys_updated_on><title/></sys_properties_category><sys_translated_text action="delete_multiple" query="documentkey=aafd06f70f922e00c55a09ece1050ea9"/></record_update>]]></payload>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>james@sndeveloper.com</sys_created_by>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>43731e3b0f922e00c55a09ece1050e08</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>james@sndeveloper.com</sys_updated_by>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <table/>
 <target_name>SND Spoke</target_name>
 <type>System Property Category</type>
@@ -2367,14 +2867,14 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
   gse = new GlideScopedEvaluator();
   return gse.evaluateScript(test, 'script');
 };]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;james@sndeveloper.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-06-03 04:59:03&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;fecfa9990f37120094f3c09ce1050ee2&lt;/sys_id&gt;&lt;sys_mod_count&gt;76&lt;/sys_mod_count&gt;&lt;sys_name&gt;snd_Spoke&lt;/sys_name&gt;&lt;sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="SND Spoke"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_fecfa9990f37120094f3c09ce1050ee2&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@sndeveloper.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-10-13 07:54:30&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>06cf8ef70f922e00c55a09ece1050ea4</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>47731e3b0f922e00c55a09ece1050e08</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <table/>
 <target_name>snd_Spoke</target_name>
 <type>Script Include</type>
@@ -2389,14 +2889,14 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
 <comments/>
 <name>db_image_c7e3723c0f81aa0094f3c09ce1050e07</name>
 <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="db_image"><db_image action="INSERT_OR_UPDATE"><active>true</active><category/><format>png</format><height>48</height><image/><name>snd-spoke-icon-48.png</name><size_bytes>4074</size_bytes><sys_class_name>db_image</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-08-02 23:56:01</sys_created_on><sys_customer_update>true</sys_customer_update><sys_id>c7e3723c0f81aa0094f3c09ce1050e07</sys_id><sys_mod_count>1</sys_mod_count><sys_name>snd-spoke-icon-48.png</sys_name><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>db_image_c7e3723c0f81aa0094f3c09ce1050e07</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-08-02 23:56:10</sys_updated_on><thumbnail/><width>48</width></db_image><sys_attachment action="INSERT_OR_UPDATE"><average_image_color/><compressed>true</compressed><content_type>image/png</content_type><file_name>image</file_name><image_height/><image_width/><size_bytes>4074</size_bytes><size_compressed>4094</size_compressed><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-08-02 23:56:10</sys_created_on><sys_id>aff3323c0f81aa0094f3c09ce1050ee5</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-08-02 23:56:10</sys_updated_on><table_name>ZZ_YYdb_image</table_name><table_sys_id>c7e3723c0f81aa0094f3c09ce1050e07</table_sys_id></sys_attachment><sys_attachment_doc action="INSERT_OR_UPDATE"><data>H4sIAAAAAAAAAA==</data><length>16</length><position>0</position><sys_attachment display_value="image" sys_id="aff3323c0f81aa0094f3c09ce1050ee5">aff3323c0f81aa0094f3c09ce1050ee5</sys_attachment><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-08-02 23:56:10</sys_created_on><sys_id>eff3323c0f81aa0094f3c09ce1050ee5</sys_id></sys_attachment_doc><sys_attachment_doc action="INSERT_OR_UPDATE"><data>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</data><length>3736</length><position>1</position><sys_attachment display_value="image" sys_id="aff3323c0f81aa0094f3c09ce1050ee5">aff3323c0f81aa0094f3c09ce1050ee5</sys_attachment><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-08-02 23:56:10</sys_created_on><sys_id>23f3323c0f81aa0094f3c09ce1050ee6</sys_id></sys_attachment_doc><sys_attachment_doc action="INSERT_OR_UPDATE"><data>rcu/LB8PrBRuhlowl9PXhR/d4FQNwJVq5we9utn2FqnTXpezgSMcrj/9NutX50cs/hkr6KIayFYq7GSng1/LaGm2QUV2lCVQSTlSSjuhKUpLhxBEniPzvntTYDTtaiWeG5d5B2raVZofpmv9IEAObqUNRRCUqdFZPZEpGisC+Dl3MXzXhoJUvhFfnhYwTip46A7hKA6JEM3ojB6RdczjKJJYyNrytVaSGwqaN9HDfXypyJgob3/Z/MTgaLmsneXYk6Kj29ZXEkJiTLzpXqn4vrfddu18pOkRtsJyv/QDUQovXaP9OWIXFlVCRzpECbARCxtxxBSujfrJS0bJ0hZlCXvG7bquWnQquq9737Ng7jjsDJn5WqWR+ZE2rC5l7JNedm50P0FflmIGSlVMepI4hOvQ35dClP+66f/w6E6/4vg5G+d1oVWsfd6JWfZuQZerCreMTlMBRFDaqe1h71pYfr8LvNVsZLkmapoo6JlDpY/TwMv1F8ur9NYPCG8ThMMYNf8MJWPqjuo/Ic5qOIzTAQbloQvWWvSZp8DsGLj/w8THbQKq09TbtMXlFiXHzfTLnzJxLnUBfQGBMmZZnpDCewpS0rCShbGChtzB6uz6BoFx9AUb96El+8e1t9scsyBDyeKT4HdbRar5KAYLiRB61AG9v/hhZjV3UI7JloThfQWzVhr4yp39jnEvl+O7elnHoakIDEF3skqG30nWtfBzWzCQDm+/iPF/WR8elLw3MohpLaWljdnVF2bKERmzJu99N5ltzZWZgqhrNuZAvoAof7LOwvFN/MnMhxLtpM1iMfzhuvlXj2ljZeS0JdItMZIaxRvnyZ7df+2AQWBplcrST5qikDKffJGzDEW8hXxmBc9L9BEXxc9OXrY49zeFbvbEf/97lwoKp0EqMOgnB5zYDp8NwEImx6lEUI3JWih0sf8SH3N9YkwnMh1YccnW3hcK/ZMzOoohVIxYHXxt+fo3EGQcgwqOThYEV2I17n86k2tYHVJR6z0cOef6eLSBH2me0Oh+U7GLdpR0wP4yVI/H0LgXom7+RVV/ipzJtYM0q31D00Xi/7SUykA/129t9yb3KsvN+3tk6SmGPMF8xxatjPc5VO8u3E0zwt94JnV+qoL37LdEYN1jBdPfIqJ6Fa3xzW18nS1alokiRYRowlKi6go/fk5IRNoOsTg40d4dyAF0K1tlbN3d+gJAMTCtI20hNII/Vv9X3KJfpJTQGDRRghpSaOgmUq1b7/zwa1kOVnf9dn1vpzJUPP+Y8dkLRlICfxY6LSbmbV6XtpJScFJBoa5CIsheSXF67DiWcBPcwH1xvPJbq0vcTzf7bIb23USMVj+JjQHf/8v2TW6TLOLPrCT9r9LM6m7N5YRLfAuJq+d0kQOLKFebuxjhnsqKw43seTduaxXnnEWenDIbe0prdM37dOc1Auz64Aq6EhVXfhilZv6hdrNJQTVkupIHO2LII6vkWjRYZi7NeizCC5WYfSlhx2z+XV98d74xjf2dsVVC/q+2h1K3HHYL8mZDodss1dffSUS7l5LlylrzZix2JysYUPsig5y+jSxHudwrg09Jgt452m9StPXTpbzlWteYvj0miyd8Vz01OcwpC38ckMcCRKSfyhcfTVaR6pP+NYYgmIWJE2/7+TYY5OT0S2rdAbk/jLBCBgq0pnu0phJtKC0toKcD167StH38P4CzeJXqDwAA</data><length>1712</length><position>2</position><sys_attachment display_value="image" sys_id="aff3323c0f81aa0094f3c09ce1050ee5">aff3323c0f81aa0094f3c09ce1050ee5</sys_attachment><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-08-02 23:56:10</sys_created_on><sys_id>63f3323c0f81aa0094f3c09ce1050ee6</sys_id></sys_attachment_doc></record_update>]]></payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>0acf8ef70f922e00c55a09ece1050ea3</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>4b731e3b0f922e00c55a09ece1050e07</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <table/>
 <target_name>snd-spoke-icon-48.png</target_name>
 <type>Images</type>
@@ -2411,14 +2911,14 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
 <comments/>
 <name>sys_app_module_e6c68eeb0f9eea00c55a09ece1050ef3</name>
 <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="SND Spoke">f88f2d990f37120094f3c09ce1050e7a</application><assessment/><content_page/><device_type/><filter table="sys_script_include">nameENDSWITH_spec^EQ<item endquery="false" field="name" goto="false" newquery="false" operator="ENDSWITH" or="false" value="_spec"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></filter><hint/><homepage/><image/><link_type>LIST</link_type><map_page/><mobile_title>Test Scripts</mobile_title><mobile_view_name>Mobile</mobile_view_name><name>sys_script_include</name><order>200</order><override_menu_roles>false</override_menu_roles><query/><report/><roles/><survey/><survey_overwrite>true</survey_overwrite><sys_class_name>sys_app_module</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-10-12 13:05:46</sys_created_on><sys_customer_update>true</sys_customer_update><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>e6c68eeb0f9eea00c55a09ece1050ef3</sys_id><sys_mod_count>5</sys_mod_count><sys_name>Test Scripts</sys_name><sys_overrides/><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_app_module_e6c68eeb0f9eea00c55a09ece1050ef3</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-10-12 13:20:44</sys_updated_on><timeline_page/><title>Test Scripts</title><uncancelable>false</uncancelable><view_name/><window_name/></sys_app_module></record_update>]]></payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>0ecf8ef70f922e00c55a09ece1050ea3</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>4f731e3b0f922e00c55a09ece1050e07</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <table>sys_script_include</table>
 <target_name>Test Scripts</target_name>
 <type>Module</type>
@@ -2433,14 +2933,14 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
 <comments/>
 <name>sys_properties_category_m2m_780e06f70f922e00c55a09ece1050e1e</name>
 <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties_category_m2m"><sys_properties_category_m2m action="INSERT_OR_UPDATE"><category display_value="SND Spoke">aafd06f70f922e00c55a09ece1050ea9</category><order>100</order><property display_value="snd.spoke.spec.filter" name="snd.spoke.spec.filter">9d49e6780f81aa0094f3c09ce1050e7f</property><sys_class_name>sys_properties_category_m2m</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-10-13 08:10:29</sys_created_on><sys_customer_update>false</sys_customer_update><sys_id>780e06f70f922e00c55a09ece1050e1e</sys_id><sys_mod_count>1</sys_mod_count><sys_name>snd.spoke.spec.filter.SND Spoke</sys_name><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_properties_category_m2m_780e06f70f922e00c55a09ece1050e1e</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-10-13 08:10:40</sys_updated_on></sys_properties_category_m2m></record_update>]]></payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>42cf8ef70f922e00c55a09ece1050ea4</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>83731e3b0f922e00c55a09ece1050e08</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <table/>
 <target_name>snd.spoke.spec.filter.SND Spoke</target_name>
 <type>Category Property</type>
@@ -2455,14 +2955,14 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
 <comments/>
 <name>sys_ui_list_sys_app_module_null</name>
 <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_ui_list parent="" relationship="" sys_domain="global" table="sys_app_module" version="2" view=""><sys_ui_list_element action="INSERT_OR_UPDATE"><average_value>false</average_value><element>title</element><list_id display_value="sys_app_module" element="NULL" name="sys_app_module" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">d711d201bf230100421cdc2ecf0739e5</list_id><max_value>false</max_value><min_value>false</min_value><position>0</position><sum>false</sum><sys_created_by>admin</sys_created_by><sys_created_on>2013-08-30 21:32:18</sys_created_on><sys_id>9f11d201bf230100421cdc2ecf0739e5</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2013-08-30 21:32:18</sys_updated_on></sys_ui_list_element><sys_ui_list_element action="INSERT_OR_UPDATE"><average_value>false</average_value><element>name</element><list_id display_value="sys_app_module" element="NULL" name="sys_app_module" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">d711d201bf230100421cdc2ecf0739e5</list_id><max_value>false</max_value><min_value>false</min_value><position>1</position><sum>false</sum><sys_created_by>admin</sys_created_by><sys_created_on>2013-08-30 21:32:18</sys_created_on><sys_id>df11d201bf230100421cdc2ecf0739e5</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2013-08-30 21:32:18</sys_updated_on></sys_ui_list_element><sys_ui_list_element action="INSERT_OR_UPDATE"><average_value>false</average_value><element>active</element><list_id display_value="sys_app_module" element="NULL" name="sys_app_module" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">d711d201bf230100421cdc2ecf0739e5</list_id><max_value>false</max_value><min_value>false</min_value><position>2</position><sum>false</sum><sys_created_by>admin</sys_created_by><sys_created_on>2013-08-30 21:32:18</sys_created_on><sys_id>1311d201bf230100421cdc2ecf0739e6</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2013-08-30 21:32:18</sys_updated_on></sys_ui_list_element><sys_ui_list_element action="INSERT_OR_UPDATE"><average_value>false</average_value><element>filter</element><list_id display_value="sys_app_module" element="NULL" name="sys_app_module" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">d711d201bf230100421cdc2ecf0739e5</list_id><max_value>false</max_value><min_value>false</min_value><position>3</position><sum>false</sum><sys_created_by>admin</sys_created_by><sys_created_on>2013-08-30 21:32:18</sys_created_on><sys_id>5311d201bf230100421cdc2ecf0739e6</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2013-08-30 21:32:18</sys_updated_on></sys_ui_list_element><sys_ui_list_element action="INSERT_OR_UPDATE"><average_value>false</average_value><element>order</element><list_id display_value="sys_app_module" element="NULL" name="sys_app_module" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">d711d201bf230100421cdc2ecf0739e5</list_id><max_value>false</max_value><min_value>false</min_value><position>4</position><sum>false</sum><sys_created_by>admin</sys_created_by><sys_created_on>2013-08-30 21:32:18</sys_created_on><sys_id>9311d201bf230100421cdc2ecf0739e6</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2013-08-30 21:32:18</sys_updated_on></sys_ui_list_element><sys_ui_list_element action="INSERT_OR_UPDATE"><average_value>false</average_value><element>link_type</element><list_id display_value="sys_app_module" element="NULL" name="sys_app_module" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">d711d201bf230100421cdc2ecf0739e5</list_id><max_value>false</max_value><min_value>false</min_value><position>5</position><sum>false</sum><sys_created_by>admin</sys_created_by><sys_created_on>2013-08-30 21:32:18</sys_created_on><sys_id>d311d201bf230100421cdc2ecf0739e6</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2013-08-30 21:32:18</sys_updated_on></sys_ui_list_element><sys_ui_list_element action="INSERT_OR_UPDATE"><average_value>false</average_value><element>application</element><list_id display_value="sys_app_module" element="NULL" name="sys_app_module" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">d711d201bf230100421cdc2ecf0739e5</list_id><max_value>false</max_value><min_value>false</min_value><position>6</position><sum>false</sum><sys_created_by>admin</sys_created_by><sys_created_on>2013-08-30 21:32:18</sys_created_on><sys_id>1711d201bf230100421cdc2ecf0739e6</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2013-08-30 21:32:18</sys_updated_on></sys_ui_list_element><sys_ui_list_element action="INSERT_OR_UPDATE"><average_value>false</average_value><element>roles</element><list_id display_value="sys_app_module" element="NULL" name="sys_app_module" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">d711d201bf230100421cdc2ecf0739e5</list_id><max_value>false</max_value><min_value>false</min_value><position>7</position><sum>false</sum><sys_created_by>admin</sys_created_by><sys_created_on>2013-08-30 21:32:18</sys_created_on><sys_id>5711d201bf230100421cdc2ecf0739e6</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2013-08-30 21:32:18</sys_updated_on></sys_ui_list_element><sys_ui_list_element action="INSERT_OR_UPDATE"><average_value>false</average_value><element>sys_updated_on</element><list_id display_value="sys_app_module" element="NULL" name="sys_app_module" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">d711d201bf230100421cdc2ecf0739e5</list_id><max_value>false</max_value><min_value>false</min_value><position>8</position><sum>false</sum><sys_created_by>admin</sys_created_by><sys_created_on>2013-08-30 21:32:18</sys_created_on><sys_id>9711d201bf230100421cdc2ecf0739e6</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2013-08-30 21:32:18</sys_updated_on></sys_ui_list_element><sys_ui_list action="INSERT_OR_UPDATE"><average_value>false</average_value><element/><max_value>false</max_value><min_value>false</min_value><name>sys_app_module</name><parent/><position/><relationship/><sum>false</sum><sys_class_name>sys_ui_list</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-10-12 13:17:46</sys_created_on><sys_customer_update>true</sys_customer_update><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>d4ca862f0f9eea00c55a09ece1050e93</sys_id><sys_mod_count>0</sys_mod_count><sys_name>sys_app_module</sys_name><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_ui_list_sys_app_module_null</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-10-12 13:17:46</sys_updated_on><sys_user display_value="James Neale">a05772b40fb3120094f3c09ce1050e66</sys_user><view display_value="Default view" name="NULL">Default view</view><view_name/></sys_ui_list></sys_ui_list></record_update>]]></payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>46cf8ef70f922e00c55a09ece1050ea4</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>87731e3b0f922e00c55a09ece1050e08</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <table>sys_app_module</table>
 <target_name>Module</target_name>
 <type>List Layout</type>
@@ -2476,15 +2976,15 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
 <category>customer</category>
 <comments/>
 <name>sys_app_3c8f6d590f37120094f3c09ce1050ea0</name>
-<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_app"><sys_app action="INSERT_OR_UPDATE"><active>true</active><licensable>true</licensable><logo/><menu display_value="SND Spoke">f88f2d990f37120094f3c09ce1050e7a</menu><name>SND Spoke</name><private>false</private><scope>global</scope><short_description>Behaviour driven development in ServiceNow. Find more at www.sndeveloper.com.</short_description><source>3c8f6d590f37120094f3c09ce1050ea0</source><store_correlation_id/><store_url/><sys_class_name>sys_app</sys_class_name><sys_code/><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-06-03 04:55:27</sys_created_on><sys_id>3c8f6d590f37120094f3c09ce1050ea0</sys_id><sys_mod_count>10</sys_mod_count><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-10-13 07:52:29</sys_updated_on><template/><user_role display_value="admin" name="admin">2831a114c611228501d4ea6c309d626d</user_role><vendor/><vendor_prefix/><version>1.6</version></sys_app></record_update>]]></payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_app"><sys_app action="INSERT_OR_UPDATE"><active>true</active><licensable>true</licensable><logo/><menu display_value="SND Spoke">f88f2d990f37120094f3c09ce1050e7a</menu><name>SND Spoke</name><private>false</private><scope>global</scope><short_description>Behaviour driven development in ServiceNow. Find more at www.sndeveloper.com.</short_description><source>3c8f6d590f37120094f3c09ce1050ea0</source><store_correlation_id/><store_url/><sys_class_name>sys_app</sys_class_name><sys_code/><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-06-03 04:55:27</sys_created_on><sys_id>3c8f6d590f37120094f3c09ce1050ea0</sys_id><sys_mod_count>11</sys_mod_count><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-10-13 08:33:10</sys_updated_on><template/><user_role display_value="admin" name="admin">2831a114c611228501d4ea6c309d626d</user_role><vendor/><vendor_prefix/><version>1.7</version></sys_app></record_update>]]></payload>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>4acf8ef70f922e00c55a09ece1050ea3</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>8b731e3b0f922e00c55a09ece1050e07</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <table/>
 <target_name>SND Spoke</target_name>
 <type>Custom Application</type>
@@ -2499,14 +2999,14 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
 <comments/>
 <name>sys_app_module_f0dd8eb70f922e00c55a09ece1050e7f</name>
 <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="SND Spoke">f88f2d990f37120094f3c09ce1050e7a</application><assessment/><content_page/><device_type/><filter/><hint/><homepage/><image/><link_type>DIRECT</link_type><map_page/><mobile_title>Test Scripts</mobile_title><mobile_view_name>Mobile</mobile_view_name><name/><order>300</order><override_menu_roles>false</override_menu_roles><query>system_properties_ui.do?sysparm_title=SND%20Spoke%20Properties&amp;sysparm_category=SND%20Spoke</query><report/><roles/><survey/><survey_overwrite>true</survey_overwrite><sys_class_name>sys_app_module</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-10-13 08:09:40</sys_created_on><sys_customer_update>true</sys_customer_update><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>f0dd8eb70f922e00c55a09ece1050e7f</sys_id><sys_mod_count>1</sys_mod_count><sys_name>Properties</sys_name><sys_overrides/><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_app_module_f0dd8eb70f922e00c55a09ece1050e7f</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-10-13 08:09:50</sys_updated_on><timeline_page/><title>Properties</title><uncancelable>false</uncancelable><view_name/><window_name/></sys_app_module></record_update>]]></payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>4ecf8ef70f922e00c55a09ece1050ea3</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>8f731e3b0f922e00c55a09ece1050e07</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <table/>
 <target_name>Properties</target_name>
 <type>Module</type>
@@ -2826,14 +3326,14 @@ describe("Pending specs", function() {
   });
 
 });]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;james@sndeveloper.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-06-03 04:59:31&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;9e50bd590f37120094f3c09ce1050e8f&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;snd_Spoke_spec&lt;/sys_name&gt;&lt;sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="SND Spoke"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_9e50bd590f37120094f3c09ce1050e8f&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@sndeveloper.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-06-03 04:59:31&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>82cf8ef70f922e00c55a09ece1050ea4</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>c3731e3b0f922e00c55a09ece1050e08</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <table/>
 <target_name>snd_Spoke_spec</target_name>
 <type>Script Include</type>
@@ -2961,14 +3461,14 @@ describe("Pending specs", function() {
 
   &lt;/body&gt;
 &lt;/html&gt;]]&gt;&lt;/xml&gt;&lt;/sys_ui_macro&gt;&lt;/record_update&gt;</payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>86cf8ef70f922e00c55a09ece1050ea4</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>c7731e3b0f922e00c55a09ece1050e08</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <table/>
 <target_name>snd_spoke_ui</target_name>
 <type>Macro</type>
@@ -2983,14 +3483,14 @@ describe("Pending specs", function() {
 <comments/>
 <name>sys_app_application_f88f2d990f37120094f3c09ce1050e7a</name>
 <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_application"><sys_app_application action="INSERT_OR_UPDATE"><active>true</active><category/><description/><device_type>browser</device_type><hint/><name>SND Spoke</name><order/><roles>admin</roles><sys_class_name>sys_app_application</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-06-03 04:55:27</sys_created_on><sys_customer_update>true</sys_customer_update><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>f88f2d990f37120094f3c09ce1050e7a</sys_id><sys_mod_count>1</sys_mod_count><sys_name>SND Spoke</sys_name><sys_overrides/><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_app_application_f88f2d990f37120094f3c09ce1050e7a</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-06-03 04:55:27</sys_updated_on><title>SND Spoke</title><view_name/></sys_app_application></record_update>]]></payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>8acf8ef70f922e00c55a09ece1050ea3</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>cb731e3b0f922e00c55a09ece1050e07</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <table/>
 <target_name>SND Spoke</target_name>
 <type>Application Menu</type>
@@ -3366,514 +3866,17 @@ describe("Pending specs", function() {
   }
 
 })();]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_processor&lt;/sys_class_name&gt;&lt;sys_created_by&gt;james@sndeveloper.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-06-03 04:56:11&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;369f6d990f37120094f3c09ce1050e0d&lt;/sys_id&gt;&lt;sys_mod_count&gt;24&lt;/sys_mod_count&gt;&lt;sys_name&gt;snd_spoke&lt;/sys_name&gt;&lt;sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="SND Spoke"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_processor_369f6d990f37120094f3c09ce1050e0d&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@sndeveloper.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-10-13 07:52:15&lt;/sys_updated_on&gt;&lt;type&gt;script&lt;/type&gt;&lt;/sys_processor&gt;&lt;/record_update&gt;</payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
+<remote_update_set display_value="SND Spoke 1.7">0b731e3b0f922e00c55a09ece1050e07</remote_update_set>
 <replace_on_upgrade>false</replace_on_upgrade>
 <sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>8ecf8ef70f922e00c55a09ece1050ea3</sys_id>
+<sys_created_on>2016-10-13 08:34:24</sys_created_on>
+<sys_id>cf731e3b0f922e00c55a09ece1050e07</sys_id>
 <sys_mod_count>0</sys_mod_count>
 <sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
+<sys_updated_on>2016-10-13 08:34:24</sys_updated_on>
 <table/>
 <target_name>snd_spoke</target_name>
 <type>Processor</type>
-<update_domain>global</update_domain>
-<update_set display_value=""/>
-<view/>
-</sys_update_xml>
-<sys_update_xml action="INSERT_OR_UPDATE">
-<action>INSERT_OR_UPDATE</action>
-<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
-<category>customer</category>
-<comments/>
-<name>sys_script_include_f21af42f0f822a00c55a09ece1050e29</name>
-<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.snd_Spoke_generateTest&lt;/api_name&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;description&gt;Generate a script template to test each function of a script.&lt;/description&gt;&lt;name&gt;snd_Spoke_generateTest&lt;/name&gt;&lt;script&gt;&lt;![CDATA[/**
- * Generate a script template to test each function of a script.
- *
- * @param  {String} api_name The ServiceNow api_name of the script include.
- * @return {String}
- */
-function snd_Spoke_generateTest(api_name) {
-
-  function getSource(api_name) {
-    var gr = new GlideRecord('sys_script_include');
-    gr.addQuery('api_name', '=', api_name);
-    gr.setLimit(1);
-    gr.query();
-    return gr.next() ? '' + gr.script : '';
-  }
-
-  function getMethods(obj) {
-    var methods = [];
-    for (var method in obj) {
-      if (obj.hasOwnProperty(method) &amp;&amp; typeof obj[method] == 'function') {
-        methods.push(method);
-      }
-    }
-    methods.sort();
-    return methods;
-  }
-
-  function describe(name, indent, content) {
-    content = content ? '  ' + content.replace(/\n/g, '\n  ' + indent) + '\n' : '  \n';
-    return indent + 'describe("' + name + '", function () {\n' +
-           indent + content +
-           indent + '});';
-  }
-
-  function toSentence(method, no_cap) {
-    var newSentence = true;
-    return method.replace(/[A-Z]{2,}|^[a-z]|[A-Z._]/g, function(v, i) {
-      if (v.length &gt; 1) return v;
-      if (newSentence) {
-        newSentence = false;
-        return (i === 0 &amp;&amp; no_cap) ? v : v.toUpperCase();
-      }
-      if (v === '.') {
-        newSentence = true;
-        return ' ';
-      }
-      return " " + (v === '_' ? '' : v.toLowerCase());
-    });
-  }
-
-  function getObject(api_name) {
-    var obj = (function () { return this;})(),
-        path = api_name.split('.'),
-        i;
-    for (i = 0; i &lt; path.length; i++) {
-      obj = obj[path[i]];
-    }
-    return obj;
-  }
-
-  function explain(source, method, is_proto) {
-    var end = 0,
-        search = (is_proto ? 'prototype.' : '') + method,
-        alt_end,
-        result,
-        match,
-        start;
-
-    do {
-      result = '';
-      start = source.indexOf(search, end);
-      if (start &lt; 0) break;
-      end = source.indexOf('{', start);
-      alt_end = source.indexOf(';', start);
-      if (alt_end &gt; 0 &amp;&amp; alt_end &lt; end) {
-        end = alt_end;
-      }
-      if (end &lt; 0) break;
-      result = source.substr(start, end - start).trim();
-    } while (result.indexOf('function') &lt; 0);
-
-    if (!result) {
-      match = source.match(new SNRegExp('(?!prototype\\s*=\\s*{.+?)' + method + ':\\s*[^)]+\\)'));
-      if (match) result = match[0];
-    }
-
-    return result || (search + ' function not defined in source code');
-  }
-
-  var source = getSource(api_name),
-      obj = getObject(api_name),
-      content = '\n',
-      comment,
-      methods,
-      is_private,
-      type,
-      i;
-
-  if (typeof obj === 'function') {
-    type = obj.prototype.type || api_name;
-    type += obj.prototype.type ? ' class' : ' object';
-    methods = getMethods(obj.prototype);
-    for (i = 0; i &lt; methods.length; i++) {
-      is_private = methods[i].indexOf('_') == 0 ? ' private' : '';
-      comment = '// test ' + explain(source, methods[i], true);
-      content += describe(toSentence(methods[i] + is_private + ' method', true), '', comment) + '\n\n';
-    }
-  } else {
-    type = api_name + ' object';
-  }
-
-  if (type.indexOf('x_') === 0) {
-    type = type.substr(type.indexOf('.'));
-  }
-
-  methods = getMethods(obj);
-  for (i = 0; i &lt; methods.length; i++) {
-    is_private = methods[i].indexOf('_') == 0 ? ' private' : '';
-    comment = '// test ' + explain(source, methods[i]);
-    content += describe(toSentence(methods[i] + is_private + ' function', true), '', comment) + '\n';
-    if (i + 1 &lt; methods.length) content += '\n'; // prevent double newline at end
-  }
-
-  if (type.match('^[a-z]')) type = ' ' + type;
-  return describe(toSentence('The' + type), '', content);
-}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;james@sndeveloper.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-09-29 21:10:29&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;f21af42f0f822a00c55a09ece1050e29&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;snd_Spoke_generateTest&lt;/sys_name&gt;&lt;sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="SND Spoke"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_f21af42f0f822a00c55a09ece1050e29&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@sndeveloper.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-09-29 22:47:46&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
-<replace_on_upgrade>false</replace_on_upgrade>
-<sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>c2cf8ef70f922e00c55a09ece1050ea4</sys_id>
-<sys_mod_count>0</sys_mod_count>
-<sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
-<table/>
-<target_name>snd_Spoke_generateTest</target_name>
-<type>Script Include</type>
-<update_domain>global</update_domain>
-<update_set display_value=""/>
-<view/>
-</sys_update_xml>
-<sys_update_xml action="INSERT_OR_UPDATE">
-<action>INSERT_OR_UPDATE</action>
-<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
-<category>customer</category>
-<comments/>
-<name>sys_ui_script_3039b02f0f822a00c55a09ece1050ebd</name>
-<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ui_script"&gt;&lt;sys_ui_script action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;description&gt;SND Spoke Client&lt;/description&gt;&lt;global&gt;false&lt;/global&gt;&lt;name&gt;snd_spoke_ui&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var url_params={};window.location.search.replace(/[?&amp;]+([^=&amp;]+)=([^&amp;]*)/gi,function(str,key,value){url_params[key] = value;});
-
-function togglePanel(forTitle) {
-  $(forTitle).parent().next('.panel-body').toggle();
-}
-
-var spoke_client = (function () {
-
-  var $result_title = $('#result_title');
-  var $result_body = $('#result_body');
-
-  function renderNode(node) {
-    var p, li, ul, i, fails, class_name, icon, html;
-
-    if (node.type == 'spec') {
-      switch (node.status) {
-        case 'passed':
-          class_name = 'text-success';
-          icon = 'ok-circle';
-          break;
-        case 'disabled':
-        case 'pending':
-          class_name = 'text-warning';
-          icon = 'ban-circle';
-          if (node.pendingReason) {
-            node.description += ' PENDING WITH MESSAGE: ' + node.pendingReason;
-          }
-          break;
-        case 'failed':
-          class_name = 'text-danger';
-          icon = 'remove-circle';
-          break;
-      }
-    } else {
-      class_name = '';
-      icon = 'list';
-    }
-
-    icon = '&lt;span class="small glyphicon glyphicon-' + icon + '"&gt;&lt;/span&gt; ';
-
-    li = $('&lt;li&gt;&lt;/li&gt;');
-    li.append('&lt;p class="' + class_name + '"&gt;' + icon + escapeHtml(node.description) + ' &lt;small class="pull-right"&gt;(' + node.execution_time + 'ms)&lt;/small&gt;&lt;/p&gt;');
-
-    if (node.status != 'pending') {
-      if (node.hasOwnProperty('failed_expectations')) {
-        if (node.failed_expectations.length) {
-          fails = $('&lt;table class="table table-striped table-bordered small"&gt;&lt;/table&gt;');
-          for (i = 0; node.failed_expectations.length &gt; i; i++) {
-            html = escapeHtml(node.failed_expectations[i]);
-            fails.append('&lt;tr class="warning"&gt;&lt;td&gt;' + html + '&lt;/td&gt;&lt;/tr&gt;');
-          }
-          li.append(fails);
-        }
-      }
-    }
-
-    if (node.hasOwnProperty('children')) {
-      if (node.children.length) {
-        ul = $('&lt;ul&gt;&lt;/ul&gt;');
-        for (i = 0; node.children.length &gt; i; i++) {
-          ul.append(renderNode(node.children[i]));
-        }
-        li.append(ul);
-      }
-    }
-
-    return li;
-  }
-
-  function renderResults(results) {
-    var ul, i, j, suite,
-        $panel_title,
-        $panel_body,
-        details,
-        api_name,
-        errors = [];
-
-    $result_title.text('Testing ' + results.status + '. ' +
-      results.total_specs + ' spec' + (results.total_specs == 1 ? '' : 's') +
-      ', ' + results.failed_specs + ' failed expectations.');
-
-    if (results.failed_specs &gt; 0) {
-      $result_title.removeClass('text-success text-warning').addClass('text-danger');
-    } else if (results.status == 'ignored') {
-      $result_title.removeClass('text-success text-danger').addClass('text-warning');
-    } else {
-      $result_title.removeClass('text-warning text-danger').addClass('text-success');
-    }
-
-    if (!results.suites) return;
-    for (i = 0; results.suites.length &gt; i; i++) {
-      suite = results.suites[i];
-      details = results.details[i];
-      api_name = results.details[i].api_name;
-
-      if (suite.hasOwnProperty('failed_expectations')) {
-        errors = errors.concat(suite.failed_expectations);
-      }
-
-      $panel =
-          $('&lt;div class="panel"&gt;&lt;div class="panel-heading"&gt;' +
-              '&lt;a href="' + api.getExecuteLink(api_name) + '" onclick="spoke_client.executeTests(\'' + api_name + '\'); return false" title="Execute" class="btn btn-link btn-open"&gt;' +
-                '&lt;span class="glyphicon glyphicon-play"&gt;&lt;/span&gt; &lt;span class="sr-only"&gt;Execute&lt;/span&gt;&lt;/a&gt;' +
-              '&lt;a href="/sys_script_include.do?sys_id=' + details.sys_id + '" onclick="$.Event(event).stopPropagation();" target="' + details.sys_id + '" title="Edit" class="btn btn-link btn-open"&gt;' +
-                '&lt;span class="glyphicon glyphicon-edit"&gt;&lt;/span&gt; &lt;span class="sr-only"&gt;Edit&lt;/span&gt;&lt;/a&gt;' +
-              '&lt;span class="btn btn-link panel-title" onclick="togglePanel(this);"&gt;' + escapeHtml(suite.description) + '&lt;/span&gt;' +
-              '&lt;small class="pull-right"&gt;(' + suite.execution_time + 'ms)&lt;/small&gt;' +
-              '&lt;div class="clearfix"&gt;&lt;/div&gt;' +
-            '&lt;/div&gt;&lt;/div&gt;');
-      $panel_body = $('&lt;div class="panel-body"&gt;&lt;/div&gt;');
-
-      if (suite.hasOwnProperty('children')) {
-        ul = $('&lt;ul&gt;&lt;/ul&gt;');
-        for (j = 0; suite.children.length &gt; j; j++) {
-          ul.append(renderNode(suite.children[j]));
-        }
-        $panel_body.append(ul);
-      }
-
-      if ($panel_body.find('.text-danger').length) {
-        $panel.addClass('panel-danger');
-      } else {
-        $panel.addClass('panel-success');
-        if (results.suites.length &gt; 1) $panel_body.hide();
-      }
-
-      $panel.append($panel_body);
-      $result_body.append($panel);
-    }
-
-    if (errors.length) {
-      api.formatError({
-        $error: '&lt;ol&gt;&lt;li&gt;' + errors.join('&lt;/li&gt;&lt;li&gt;') + '&lt;/li&gt;&lt;/ol&gt;'
-      });
-    }
-
-  }
-
-  function renderSpecs(specs) {
-    var $list_group,
-        $panel,
-        spec,
-        i;
-
-    $result_title.text('Found ' + specs.length + ' spec' + (specs.length == 1 ? '' : 's'));
-    if (specs.length) {
-      $result_title.removeClass('text-warning text-danger').addClass('text-success');
-    } else {
-      $result_title.removeClass('text-success text-danger').addClass('text-warning');
-      return;
-    }
-
-    $list_group = $('&lt;div class="list-group"&gt;&lt;/div&gt;');
-    for (i = 0; specs.length &gt; i; i++) {
-      spec = specs[i];
-      $item =
-          '&lt;div class="list-group-item list-group-item-warning"&gt;' +
-            spec.name +
-            '&lt;div class="pull-right"&gt;' +
-              '&lt;a class="btn btn-link" href="/sys_script_include.do?sys_id=' + spec.sys_id + '" target="' + spec.sys_id + '"&gt;' +
-                '&lt;span class="glyphicon glyphicon-edit"&gt;&lt;/span&gt; Edit&lt;/a&gt;' +
-              '&lt;a class="btn btn-success" onclick="spoke_client.executeTests(\'' + spec.api_name + '\'); return false" href="' + api.getExecuteLink(spec.api_name) + '"&gt;' +
-                '&lt;span class="glyphicon glyphicon-play"&gt;&lt;/span&gt; Execute&lt;/a&gt;' +
-            '&lt;/div&gt;' +
-            '&lt;div class="small"&gt;Updated: ' + spec.updated + '&lt;/div&gt;' +
-          '&lt;/div&gt;';
-      $list_group.append($item);
-    }
-    $result_body.append($list_group);
-  }
-
-  var _charMap = {
-    '&gt;': '&amp;gt;',
-    '&lt;': '&amp;lt;',
-    '&amp;': '&amp;amp;',
-    "'": '&amp;#39;',
-    '"': '&amp;#34;'
-  };
-  function escapeHtml(text) {
-    return text.replace(/[&gt;&lt;&amp;'"]/g, function (c) {
-      return c in _charMap ? _charMap[c] : c;
-    });
-  }
-
-  var api = {};
-
-  api.current_script = url_params.script;
-
-  api.getAvailableSpecs = function () {
-    var url = ['?action=getAvailableSpecs'];
-    if ('sys_scope' in url_params) url.push('sys_scope=' + url_params.sys_scope);
-    api.current_script = '';
-    return api.run(url.join('&amp;'), function (data) {
-      if (data.$success) {
-        renderSpecs(data.specs);
-        $result_title.show();
-        $result_body.show();
-      }
-    });
-  };
-
-  api.formatError = function (data) {
-    if (data.$error) {
-      var message = data.$error.message ? data.$error.message : data.$error;
-      var html = '&lt;div class="alert alert-danger"&gt;' +
-          '&lt;h4&gt;&lt;span class="glyphicon glyphicon-remove-circle"&gt;&lt;/span&gt; Process Error&lt;/h4&gt;' +
-          '&lt;p&gt;&lt;samp&gt;' + message + '&lt;/samp&gt;&lt;/p&gt;';
-
-        if (data.$error.scope_stack) {
-          html += '&lt;p&gt;&lt;samp&gt;in ' + data.$error.scope_stack.join('&lt;br /&gt; in ') + '&lt;/samp&gt;&lt;/p&gt;';
-        }
-
-        html += '&lt;/div&gt;';
-        $result_body.prepend(html);
-        $result_body.show();
-    }
-  };
-
-  api.getExecuteLink = function (script) {
-    var url = ['?action=executeTests'];
-    if ('sys_scope' in url_params) url.push('sys_scope=' + url_params.sys_scope);
-    if (script) url.push('script=' + script);
-    return url.join('&amp;');
-  };
-
-  api.executeTests = function (script) {
-    if (arguments.length &gt; 0) api.current_script = script;
-    return api.run(api.getExecuteLink(api.current_script), function (data) {
-      if (data.$success) {
-        renderResults(data.results);
-        $result_title.show();
-        $result_body.show();
-      }
-    });
-  };
-
-  api.run = function (url, callback) {
-
-    $result_title.removeClass().addClass('text-primary').text('Running...');
-
-    url += '&amp;sysparm_ck=' + SYSPARM_CK;
-
-    $('#run_btn').prop('disabled', true);
-    $('#get_btn').prop('disabled', true);
-
-    $result_body.empty();
-
-
-    return $.ajax({
-      url: url,
-      dataType: 'json',
-      statusCode: {
-        401: function () {
-          window.location.reload();
-        }
-      }
-    }).then(function (data) {
-      api.formatError(data);
-      callback(data);
-    }, function (xhr) {
-      alert('Failed to execute AJAX request to run tests.');
-    }).then(function () {
-      $('#run_btn').prop('disabled', false);
-      $('#run_btn_text').text(spoke_client.current_script ? 'Execute' : 'Execute All');
-      $('#get_btn').prop('disabled', false);
-    });
-  };
-
-  return api;
-})();
-
-$('#run_btn').click(function () {
-  $('#run_btn_text').text('Running...');
-  spoke_client.executeTests();
-});
-
-$('#get_btn').click(function () {
-  spoke_client.getAvailableSpecs();
-});
-
-// if no script has been requested then show the available specs
-if (!url_params.script) {
-  spoke_client.getAvailableSpecs();
-}]]&gt;&lt;/script&gt;&lt;script_name/&gt;&lt;sys_class_name&gt;sys_ui_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;james@sndeveloper.com&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2016-09-29 21:06:23&lt;/sys_created_on&gt;&lt;sys_customer_update&gt;true&lt;/sys_customer_update&gt;&lt;sys_id&gt;3039b02f0f822a00c55a09ece1050ebd&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;snd_spoke_ui&lt;/sys_name&gt;&lt;sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_replace_on_upgrade&gt;false&lt;/sys_replace_on_upgrade&gt;&lt;sys_scope display_value="SND Spoke"&gt;3c8f6d590f37120094f3c09ce1050ea0&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_script_3039b02f0f822a00c55a09ece1050ebd&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;james@sndeveloper.com&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2016-09-29 21:06:23&lt;/sys_updated_on&gt;&lt;use_scoped_format&gt;false&lt;/use_scoped_format&gt;&lt;/sys_ui_script&gt;&lt;/record_update&gt;</payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
-<replace_on_upgrade>false</replace_on_upgrade>
-<sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>c6cf8ef70f922e00c55a09ece1050ea4</sys_id>
-<sys_mod_count>0</sys_mod_count>
-<sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
-<table/>
-<target_name>snd_spoke_ui</target_name>
-<type>UI Script</type>
-<update_domain>global</update_domain>
-<update_set display_value=""/>
-<view/>
-</sys_update_xml>
-<sys_update_xml action="INSERT_OR_UPDATE">
-<action>INSERT_OR_UPDATE</action>
-<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
-<category>customer</category>
-<comments/>
-<name>sys_app_module_77c071d90f37120094f3c09ce1050ecc</name>
-<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="SND Spoke">f88f2d990f37120094f3c09ce1050e7a</application><assessment/><content_page/><device_type/><filter/><hint>Spoke - the BDD test utility</hint><homepage/><image/><link_type>DIRECT</link_type><map_page/><mobile_title>Spoke</mobile_title><mobile_view_name>Mobile</mobile_view_name><name/><order/><override_menu_roles>false</override_menu_roles><query>/snd_spoke.do</query><report/><roles/><survey/><survey_overwrite>true</survey_overwrite><sys_class_name>sys_app_module</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-06-03 05:01:57</sys_created_on><sys_customer_update>true</sys_customer_update><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>77c071d90f37120094f3c09ce1050ecc</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Spoke</sys_name><sys_overrides/><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_app_module_77c071d90f37120094f3c09ce1050ecc</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-06-03 05:01:57</sys_updated_on><timeline_page/><title>Spoke</title><uncancelable>false</uncancelable><view_name/><window_name>_blank</window_name></sys_app_module></record_update>]]></payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
-<replace_on_upgrade>false</replace_on_upgrade>
-<sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>cacf8ef70f922e00c55a09ece1050ea3</sys_id>
-<sys_mod_count>0</sys_mod_count>
-<sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
-<table/>
-<target_name>Spoke</target_name>
-<type>Module</type>
-<update_domain>global</update_domain>
-<update_set display_value=""/>
-<view/>
-</sys_update_xml>
-<sys_update_xml action="INSERT_OR_UPDATE">
-<action>INSERT_OR_UPDATE</action>
-<application display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</application>
-<category>customer</category>
-<comments/>
-<name>sys_properties_9d49e6780f81aa0094f3c09ce1050e7f</name>
-<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties"><sys_properties action="INSERT_OR_UPDATE"><choices/><description>&lt;b&gt;Spoke Specification Filter&lt;/b&gt;&lt;br&gt;&#13;
-- Treat script includes that end with this string as Spoke specification scripts</description><ignore_cache>false</ignore_cache><is_private>false</is_private><name>snd.spoke.spec.filter</name><read_roles/><suffix/><sys_class_name>sys_properties</sys_class_name><sys_created_by>james@sndeveloper.com</sys_created_by><sys_created_on>2016-08-02 23:14:22</sys_created_on><sys_customer_update>true</sys_customer_update><sys_id>9d49e6780f81aa0094f3c09ce1050e7f</sys_id><sys_mod_count>2</sys_mod_count><sys_name>snd.spoke.spec.filter</sys_name><sys_package display_value="SND Spoke" source="3c8f6d590f37120094f3c09ce1050ea0">3c8f6d590f37120094f3c09ce1050ea0</sys_package><sys_policy/><sys_replace_on_upgrade>false</sys_replace_on_upgrade><sys_scope display_value="SND Spoke">3c8f6d590f37120094f3c09ce1050ea0</sys_scope><sys_update_name>sys_properties_9d49e6780f81aa0094f3c09ce1050e7f</sys_update_name><sys_updated_by>james@sndeveloper.com</sys_updated_by><sys_updated_on>2016-08-02 23:32:26</sys_updated_on><type>string</type><value>_spec</value><write_roles/></sys_properties><sys_translated_text action="delete_multiple" query="documentkey=9d49e6780f81aa0094f3c09ce1050e7f"/></record_update>]]></payload>
-<remote_update_set display_value="SND Spoke">c6cf8ef70f922e00c55a09ece1050ea3</remote_update_set>
-<replace_on_upgrade>false</replace_on_upgrade>
-<sys_created_by>james@sndeveloper.com</sys_created_by>
-<sys_created_on>2016-10-13 08:18:13</sys_created_on>
-<sys_id>cecf8ef70f922e00c55a09ece1050ea3</sys_id>
-<sys_mod_count>0</sys_mod_count>
-<sys_updated_by>james@sndeveloper.com</sys_updated_by>
-<sys_updated_on>2016-10-13 08:18:13</sys_updated_on>
-<table/>
-<target_name>snd.spoke.spec.filter</target_name>
-<type>System Property</type>
 <update_domain>global</update_domain>
 <update_set display_value=""/>
 <view/>
