@@ -2,7 +2,7 @@
 Behaviour driven development in ServiceNow. Find more at www.sndeveloper.com.
 
 ### Version 1.7
-* Amend update set name for clarity.
+* Amend update set name for clarity; actually just version 1.6.
 
 ### Version 1.6
 * Fixed property lookup in processor.
