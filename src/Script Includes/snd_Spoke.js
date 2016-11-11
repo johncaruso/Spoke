@@ -2268,7 +2268,7 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
       fn;
 
   var script = 'try {\n' +
-      'var $ = new snd_Spoke();\n' +
+      'var $ = new global.snd_Spoke();\n' +
       '$.updateEnv(this);\n\n';
 
   if (glide_record.hasNext()) {
@@ -2279,11 +2279,11 @@ snd_Spoke.executeFromScripts = function (glide_record, script_field) {
                   'sys_updated_on: "' + glide_record.getValue('sys_updated_on') + '", ' +
                   'sys_id: "' + glide_record.getValue('sys_id') + '" ' +
                 '});\n';
-      script += 'snd_Spoke.EXECUTE_LINE = ' + script.split('\n').length + ' + 1;\n';
+      script += 'global.snd_Spoke.EXECUTE_LINE = ' + script.split('\n').length + ' + 1;\n';
       script += 'describe("' + glide_record.getDisplayValue() + '", function () { \n';
       script += 'try {';
       script += glide_record.getValue(script_field) + '\n\n';
-      script += '} catch (e) { fail(snd_Spoke.exceptionFormatter.formatMessage(e)); }';
+      script += '} catch (e) { fail(global.snd_Spoke.exceptionFormatter.formatMessage(e)); }';
       script += '});\n';
     }
     script += '$.execute();';
