@@ -274,6 +274,17 @@ $('#run_btn').click(function () {
   spoke_client.executeTests();
 });
 
+// execute when Ctrl + Enter is used
+$(document).keydown(function (event) {
+  if (event.ctrlKey) {
+    if (event.keyCode == 10 || event.keyCode == 13) {
+      event.preventDefault();
+      $('#run_btn_text').text('Running...');
+      spoke_client.executeTests();
+    }
+  }
+});
+
 $('#get_btn').click(function () {
   spoke_client.getAvailableSpecs();
 });
